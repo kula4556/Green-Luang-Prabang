@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="lo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about Green Luang Prabang's community clean-up activity."
+    />
+    <title>Community Clean-Up | Green Luang Prabang</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link href="https://fonts.cdnfonts.com/css/phetsarath" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: "#0d4a34",
+              deep: "#0a3b2a",
+              leaf: "#3f8f5a",
+              mist: "#bfe3e8",
+              paper: "#fbfaf6",
+              sand: "#efece0",
+              earth: "#8a5a2b",
+            },
+            fontFamily: { sans: ["Phetsarath", "sans-serif"] },
+          },
+        },
+      };
+    </script>
+    <style>
+      #lang-switch::before {
+        position: absolute;
+        top: 0.25rem;
+        bottom: 0.25rem;
+        left: 0.25rem;
+        width: calc((100% - 0.5rem) / 2);
+        border-radius: 9999px;
+        background-color: #064e3b;
+        content: "";
+        pointer-events: none;
+        transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      #lang-switch:has([data-lang="en"].act)::before {
+        transform: translateX(100%);
+      }
+
+      #lang-switch [data-lang] {
+        position: relative;
+        z-index: 1;
+        transition: color 300ms ease;
+      }
+
+      #lang-switch [data-lang].act {
+        background-color: transparent;
+        color: #fff;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #lang-switch::before,
+        #lang-switch [data-lang] {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-paper font-sans text-deep antialiased">
+    <header
+      class="fixed inset-x-0 top-0 z-40 border-b border-deep/5 bg-paper/90 text-forest shadow-sm backdrop-blur-md"
+    >
+      <div
+        class="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-8"
+      >
+        <a
+          href="Green Luang Prabang.html#home"
+          class="flex items-center gap-3"
+          aria-label="Green Luang Prabang home"
+        >
+          <span
+            class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-current/40 bg-white/10 p-0.5"
+          >
+            <img
+              src="Images/Green LPB _ without background (1).png"
+              alt="Green Luang Prabang"
+              class="h-full w-full object-contain"
+            />
+          </span>
+          <span class="leading-tight">
+            <b class="block text-lg font-semibold sm:text-xl"
+              >Green Luang Prabang</b
+            >
+            <small class="text-xs tracking-widest opacity-70"
+              >LAOS · ລາວ</small
+            >
+          </span>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <div
+            id="lang-switch"
+            class="relative grid grid-cols-2 rounded-full border border-current/30 p-1 text-sm font-semibold"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              type="button"
+              data-lang="lo"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+              aria-pressed="true"
+            >
+              ລາວ
+            </button>
+            <button
+              type="button"
+              data-lang="en"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+          </div>
+          <a
+            href="Green Luang Prabang.html#projects"
+            class="rounded-full bg-forest px-4 py-2 text-xs font-semibold text-white transition hover:bg-leaf sm:px-5 sm:text-sm"
+          >
+            <span data-lo="ກັບສູ່ໂຄງການ" data-en="Back to projects"
+              >ກັບສູ່ໂຄງການ</span
+            >
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pb-20 pt-28 sm:pt-32">
+      <section class="mx-auto max-w-7xl px-4 py-8 sm:px-8 sm:py-12">
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div class="space-y-6">
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-sand px-4 py-2 text-xs font-semibold text-earth"
+            >
+              <i class="ri-delete-bin-7-line" aria-hidden="true"></i>
+              <span
+                data-lo="ກິດຈະກຳສິ່ງແວດລ້ອມຊຸມຊົນ"
+                data-en="COMMUNITY ENVIRONMENTAL ACTION"
+                >ກິດຈະກຳສິ່ງແວດລ້ອມຊຸມຊົນ</span
+              >
+            </span>
+            <h1
+              class="text-3xl font-bold leading-snug text-deep sm:text-5xl"
+              data-lo="ກິດຈະກຳເກັບຂີ້ເຫຍື້ອຊຸມຊົນ"
+              data-en="Community Clean-Up Activity"
+            >
+              ກິດຈະກຳເກັບຂີ້ເຫຍື້ອຊຸມຊົນ
+            </h1>
+            <p
+              class="text-base leading-relaxed text-deep/75 sm:text-lg"
+              data-lo="ຊາວເມືອງ, ນັກຮຽນ ແລະ ອາສາສະໝັກ ຮ່ວມກັນເກັບຂີ້ເຫຍື້ອໃນພື້ນທີ່ສາທາລະນະ, ແຄມແມ່ນ້ຳ ແລະ ເສັ້ນທາງອ້ອມວັດ ເພື່ອສ້າງຈິດສຳນຶກໃນການຖິ້ມຂີ້ເຫຍື້ອ."
+              data-en="Residents, students, and volunteers work together to collect litter in public areas, along riverbanks, and around temples while raising awareness about responsible waste disposal."
+            >
+              ຊາວເມືອງ, ນັກຮຽນ ແລະ ອາສາສະໝັກ ຮ່ວມກັນເກັບຂີ້ເຫຍື້ອໃນພື້ນທີ່ສາທາລະນະ, ແຄມແມ່ນ້ຳ ແລະ ເສັ້ນທາງອ້ອມວັດ ເພື່ອສ້າງຈິດສຳນຶກໃນການຖິ້ມຂີ້ເຫຍື້ອ.
+            </p>
+            <dl class="grid max-w-lg grid-cols-2 gap-3 sm:gap-4">
+              <div
+                class="rounded-2xl border border-deep/10 bg-white/80 p-4 shadow-sm transition-[background-color,box-shadow] duration-300 hover:bg-white hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] motion-reduce:transition-none sm:p-5"
+              >
+                <dt
+                  class="flex items-center gap-2 text-xs font-semibold text-deep/65 sm:text-sm"
+                >
+                  <i
+                    class="ri-calendar-event-line text-lg text-forest"
+                    aria-hidden="true"
+                  ></i>
+                  <span data-lo="ກິດຈະກຳ" data-en="Activities">ກິດຈະກຳ</span>
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-bold text-forest sm:text-4xl"
+                  data-count="20"
+                  data-prefix="~"
+                >
+                  ~20
+                </dd>
+              </div>
+              <div
+                class="rounded-2xl border border-deep/10 bg-white/80 p-4 shadow-sm transition-[background-color,box-shadow] duration-300 hover:bg-white hover:shadow-[inset_0_0_10px_rgba(255,255,255,1)] motion-reduce:transition-none sm:p-5"
+              >
+                <dt
+                  class="flex items-center gap-2 text-xs font-semibold text-deep/65 sm:text-sm"
+                >
+                  <i
+                    class="ri-group-line text-lg text-forest"
+                    aria-hidden="true"
+                  ></i>
+                  <span data-lo="ອາສາສະໝັກ" data-en="Volunteers"
+                    >ອາສາສະໝັກ</span
+                  >
+                </dt>
+                <dd
+                  class="mt-2 text-3xl font-bold text-forest sm:text-4xl"
+                  data-count="113"
+                >
+                  113
+                </dd>
+              </div>
+            </dl>
+            <a
+              href="https://www.facebook.com/share/1BCddzTGht/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex w-full max-w-lg items-center justify-between gap-4 rounded-2xl border border-deep/10 bg-white/80 px-5 py-4 text-forest shadow-sm transition-[background-color,box-shadow] duration-500 hover:bg-white hover:shadow-[inset_0_4px_10px_rgba(0,0,0,0.1)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2] motion-reduce:transition-none"
+            >
+              <span class="flex items-center gap-3">
+                <i
+                  class="ri-facebook-circle-fill shrink-0 text-3xl text-[#1877F2] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 group-focus-visible:scale-110 group-focus-visible:rotate-6 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none"
+                  aria-hidden="true"
+                ></i>
+                <span>
+                  <span
+                    class="block text-sm font-bold sm:text-base"
+                    data-lo="ຕິດຕາມກິດຈະກຳຂອງພວກເຮົາ"
+                    data-en="Follow our clean-up activities"
+                    >ຕິດຕາມກິດຈະກຳຂອງພວກເຮົາ</span
+                  >
+                  <span
+                    class="mt-0.5 block text-xs text-deep/60 sm:text-sm"
+                    >Facebook · Onebag day LPB</span
+                  >
+                </span>
+              </span>
+              <i
+                class="ri-arrow-right-up-line shrink-0 text-xl text-deep/50 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none"
+                aria-hidden="true"
+              ></i>
+            </a>
+          </div>
+          <div
+            class="group relative aspect-4/3 overflow-hidden rounded-3xl border border-white/60 shadow-2xl"
+            role="region"
+            aria-label="Community clean-up photos"
+            aria-roledescription="carousel"
+          >
+            <img
+              id="cleanup-image"
+              src="Images_cleanup/854944080_1488870426418765_8871877238937711309_n.png"
+              alt="Community clean-up activity in Luang Prabang"
+              class="h-full w-full object-cover transition-opacity duration-300"
+            />
+            <button
+              type="button"
+              id="cleanup-image-prev"
+              class="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/50 bg-white/70 text-2xl text-deep shadow-lg backdrop-blur-md transition-[background-color,transform] duration-300 hover:-translate-x-1 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-x-0 sm:left-4"
+              aria-label="Previous image"
+              aria-controls="cleanup-image"
+            >
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              id="cleanup-image-next"
+              class="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/50 bg-white/70 text-2xl text-deep shadow-lg backdrop-blur-md transition-[background-color,transform] duration-300 hover:translate-x-1 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-x-0 sm:right-4"
+              aria-label="Next image"
+              aria-controls="cleanup-image"
+            >
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+            </button>
+            <span
+              id="cleanup-image-status"
+              class="absolute bottom-3 left-3 rounded-full border border-white/50 bg-white/50 px-3 py-1 text-xs font-semibold text-deep shadow-sm backdrop-blur-md"
+              aria-live="polite"
+            ></span>
+            <div
+              class="absolute bottom-3 right-3 flex max-w-[70%] items-center gap-2 rounded-2xl border border-white/50 bg-white/50 p-3 text-xs font-bold text-deep shadow-xl backdrop-blur-md sm:right-4 sm:max-w-sm sm:p-4 sm:text-sm"
+            >
+              <i
+                class="ri-team-line shrink-0 text-2xl text-forest"
+                aria-hidden="true"
+              ></i>
+              <p
+                data-lo="ຮ່ວມແຮງກັນ ເພື່ອພື້ນທີ່ສາທາລະນະທີ່ສະອາດຂຶ້ນ"
+                data-en="Working together for cleaner shared spaces"
+              >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 border-y border-deep/5 bg-white/70 py-16 sm:mt-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-8">
+          <div class="mx-auto mb-10 max-w-2xl text-center">
+            <p
+              class="text-xs font-bold uppercase tracking-[0.2em] text-leaf"
+              data-lo="ຮ່ວມກັນລົງມືເຮັດ"
+              data-en="HOW WE TAKE ACTION"
+            >
+              ຮ່ວມກັນລົງມືເຮັດ
+            </p>
+            <h2
+              class="mt-3 text-2xl font-bold text-deep sm:text-3xl"
+              data-lo="ທຸກຄົນສາມາດຊ່ວຍໄດ້"
+              data-en="Everyone can make a difference"
+            >
+              ທຸກຄົນສາມາດຊ່ວຍໄດ້
+            </h2>
+          </div>
+          <div class="grid gap-5 md:grid-cols-3">
+            <article
+              class="rounded-3xl border border-deep/10 bg-paper p-6 shadow-sm"
+            >
+              <i
+                class="ri-group-line text-3xl text-forest"
+                aria-hidden="true"
+              ></i>
+              <h3
+                class="mt-4 text-lg font-bold"
+                data-lo="ລວມພະລັງຊຸມຊົນ"
+                data-en="Bring the community together"
+              >
+                ລວມພະລັງຊຸມຊົນ
+              </h3>
+              <p
+                class="mt-2 leading-relaxed text-deep/70"
+                data-lo="ຊາວເມືອງ, ນັກຮຽນ ແລະ ອາສາສະໝັກ ຮ່ວມມືກັນໃນກິດຈະກຳ."
+                data-en="Residents, students, and volunteers take part together."
+              >
+                ຊາວເມືອງ, ນັກຮຽນ ແລະ ອາສາສະໝັກ ຮ່ວມມືກັນໃນກິດຈະກຳ.
+              </p>
+            </article>
+            <article
+              class="rounded-3xl border border-deep/10 bg-paper p-6 shadow-sm"
+            >
+              <i
+                class="ri-map-pin-line text-3xl text-forest"
+                aria-hidden="true"
+              ></i>
+              <h3
+                class="mt-4 text-lg font-bold"
+                data-lo="ດູແລພື້ນທີ່ຮ່ວມກັນ"
+                data-en="Care for shared places"
+              >
+                ດູແລພື້ນທີ່ຮ່ວມກັນ
+              </h3>
+              <p
+                class="mt-2 leading-relaxed text-deep/70"
+                data-lo="ເກັບຂີ້ເຫຍື້ອຕາມພື້ນທີ່ສາທາລະນະ, ແຄມແມ່ນ້ຳ ແລະ ບໍລິເວນອ້ອມວັດ."
+                data-en="Collect litter in public areas, along riverbanks, and around temples."
+              >
+                ເກັບຂີ້ເຫຍື້ອຕາມພື້ນທີ່ສາທາລະນະ, ແຄມແມ່ນ້ຳ ແລະ
+                ບໍລິເວນອ້ອມວັດ.
+              </p>
+            </article>
+            <article
+              class="rounded-3xl border border-deep/10 bg-paper p-6 shadow-sm"
+            >
+              <i
+                class="ri-lightbulb-line text-3xl text-forest"
+                aria-hidden="true"
+              ></i>
+              <h3
+                class="mt-4 text-lg font-bold"
+                data-lo="ສ້າງຈິດສຳນຶກ"
+                data-en="Build awareness"
+              >
+                ສ້າງຈິດສຳນຶກ
+              </h3>
+              <p
+                class="mt-2 leading-relaxed text-deep/70"
+                data-lo="ສົ່ງເສີມການຖິ້ມຂີ້ເຫຍື້ອຢ່າງຮັບຜິດຊອບ ແລະ ການຮັກສາຄວາມສະອາດ."
+                data-en="Encourage responsible waste disposal and care for the local environment."
+              >
+                ສົ່ງເສີມການຖິ້ມຂີ້ເຫຍື້ອຢ່າງຮັບຜິດຊອບ ແລະ
+                ການຮັກສາຄວາມສະອາດ.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-deep py-12 text-white sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-8">
+        <div class="mb-10 grid gap-8 md:grid-cols-12">
+          <div class="flex flex-col items-start gap-5 sm:flex-row sm:gap-7 md:col-span-7">
+            <a
+              href="Green Luang Prabang.html#home"
+              class="shrink-0 rounded-2xl bg-white p-2"
+              aria-label="Green Luang Prabang home"
+            >
+              <img
+                src="Images/Green LPB _ without background (1).png"
+                alt="Green Luang Prabang logo"
+                class="h-24 w-24 object-contain"
+              />
+            </a>
+            <div class="space-y-2 text-sm text-white/70">
+              <h2 class="inline-flex items-center gap-2 text-xl font-bold tracking-wide text-white">
+                <i class="ri-leaf-line text-emerald-300" aria-hidden="true"></i>
+                Green Luang Prabang
+              </h2>
+              <p
+                class="max-w-md leading-relaxed text-white/60"
+                data-lo="Green Luang Prabang ສ້າງແຮງບັນດານໃຈໃຫ້ຮັບຜິດຊອບຕໍ່ສິ່ງແວດລ້ອມ ໂດຍເຊື່ອມຊຸມຊົນເຂົ້າກັນ ເພື່ອຫຼຸດຂີ້ເຫຍື້ອ ນຳວັດສະດຸກັບມາໃຊ້ໃໝ່ ແລະ ສ້າງການປ່ຽນແປງທີ່ດີໃນຫຼວງພະບາງ."
+                data-en="Green Luang Prabang inspires environmental responsibility by bringing communities together to reduce waste, reuse materials, and create positive change in Luang Prabang."
+              >
+                Green Luang Prabang ສ້າງແຮງບັນດານໃຈໃຫ້ຮັບຜິດຊອບຕໍ່ສິ່ງແວດລ້ອມ ໂດຍເຊື່ອມຊຸມຊົນເຂົ້າກັນ ເພື່ອຫຼຸດຂີ້ເຫຍື້ອ ນຳວັດສະດຸກັບມາໃຊ້ໃໝ່ ແລະ ສ້າງການປ່ຽນແປງທີ່ດີໃນຫຼວງພະບາງ.
+              </p>
+              <p class="inline-flex items-center gap-2 text-white/80">
+                <i class="ri-map-pin-line text-emerald-300" aria-hidden="true"></i>
+                <span data-lo="ຫຼວງພະບາງ, ລາວ" data-en="Luang Prabang, Laos">ຫຼວງພະບາງ, ລາວ</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 text-sm text-white/70 md:col-span-5 md:pl-6">
+            <h3
+              class="text-base font-bold uppercase tracking-[0.12em] text-emerald-200"
+              data-lo="ຕິດຕໍ່"
+              data-en="Contact"
+            >
+              ຕິດຕໍ່
+            </h3>
+            <div class="flex flex-wrap items-baseline gap-2">
+              <i class="ri-phone-line w-4 text-emerald-300" aria-hidden="true"></i>
+              <span data-lo="ໂທ:" data-en="Phone:">ໂທ:</span>
+              <a href="tel:+8562023246519" class="transition-colors hover:text-emerald-300">020 23 246 519</a>
+            </div>
+            <div class="flex flex-wrap items-baseline gap-2">
+              <i class="ri-mail-line w-4 text-emerald-300" aria-hidden="true"></i>
+              <span data-lo="ອີເມວ:" data-en="Email:">ອີເມວ:</span>
+              <a href="mailto:greenluangprabang@gmail.com" class="break-all transition-colors hover:text-emerald-300">greenluangprabang@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 border-t border-white/10"></div>
+        <div class="flex flex-col gap-6 pt-2 md:flex-row md:items-center md:justify-between">
+          <nav
+            aria-label="Footer navigation"
+            class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs font-semibold text-white/75 md:justify-start"
+          >
+            <a href="Green Luang Prabang.html#home" class="transition-colors hover:text-emerald-300" data-lo="ໜ້າຫຼັກ" data-en="Home">ໜ້າຫຼັກ</a>
+            <a href="Green Luang Prabang.html#about" class="transition-colors hover:text-emerald-300" data-lo="ກ່ຽວກັບພວກເຮົາ" data-en="About us">ກ່ຽວກັບພວກເຮົາ</a>
+            <a href="Green Luang Prabang.html#projects" class="transition-colors hover:text-emerald-300" data-lo="ໂຄງການ" data-en="Projects">ໂຄງການ</a>
+            <a href="Green Luang Prabang.html#gallery" class="transition-colors hover:text-emerald-300" data-lo="ຄັງຮູບ" data-en="Gallery">ຄັງຮູບ</a>
+            <a href="Green Luang Prabang.html#donate" class="transition-colors hover:text-emerald-300" data-lo="ບໍລິຈາກຝາຂວດ" data-en="Donate bottle caps">ບໍລິຈາກຝາຂວດ</a>
+          </nav>
+          <div class="flex items-center justify-center gap-3 text-white">
+            <a
+              href="https://www.facebook.com/share/1FWvvD2T1J/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            ><i class="ri-facebook-fill text-sm" aria-hidden="true"></i></a>
+            <a
+              href="https://www.tiktok.com/@greenluangprabang?is_from_webapp=1&sender_device=pc"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            ><i class="ri-tiktok-fill text-sm" aria-hidden="true"></i></a>
+            <a
+              href="https://www.instagram.com/greenluangprabang?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            ><i class="ri-instagram-line text-sm" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="mt-7 flex flex-col gap-3 border-t border-white/10 pt-5 text-center text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p class="inline-flex items-center justify-center gap-2 sm:justify-start">
+            <i class="ri-leaf-line shrink-0 text-emerald-300" aria-hidden="true"></i>
+            <span data-lo="ການປົກປ້ອງທຳມະຊາດເລີ່ມຈາກທາງເລືອກຂອງພວກເຮົາໃນມື້ນີ້." data-en="Protecting nature starts with the choices we make today.">
+              ການປົກປ້ອງທຳມະຊາດເລີ່ມຈາກທາງເລືອກຂອງພວກເຮົາໃນມື້ນີ້.
+            </span>
+          </p>
+          <p class="inline-flex items-center justify-center gap-2 sm:justify-start">
+            <i class="ri-copyright-line text-xs" aria-hidden="true"></i>
+            <span data-lo="2026 Kula. ສະຫງວນສິດທັງໝົດ." data-en="2026 Kula. All rights reserved.">2026 Kula. ສະຫງວນສິດທັງໝົດ.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const cleanupImages = [
+        "Images_cleanup/854944080_1488870426418765_8871877238937711309_n.png",
+        "Images_cleanup/WhatsApp Image 2026-10-21 at 19.15.38.jpeg",
+        "Images_cleanup/waste activity1.jpeg",
+        "Images_cleanup/waste activity2.jpeg",
+        "Images_cleanup/waste activity 3.jpeg",
+        "Images_cleanup/waste activity 4.jpeg",
+        "Images_cleanup/waste activity 5.jpeg",
+        "Images_cleanup/832819428_1654885873006871_7689622961727614658_n.jpg",
+      ];
+      const cleanupImage = document.getElementById("cleanup-image");
+      const cleanupImageStatus = document.getElementById("cleanup-image-status");
+      let cleanupImageIndex = 0;
+
+      function showCleanupImage(offset) {
+        cleanupImageIndex =
+          (cleanupImageIndex + offset + cleanupImages.length) %
+          cleanupImages.length;
+        cleanupImage.src = cleanupImages[cleanupImageIndex];
+        cleanupImageStatus.textContent = `${cleanupImageIndex + 1} / ${cleanupImages.length}`;
+      }
+
+      document
+        .getElementById("cleanup-image-prev")
+        .addEventListener("click", () => showCleanupImage(-1));
+      document
+        .getElementById("cleanup-image-next")
+        .addEventListener("click", () => showCleanupImage(1));
+      showCleanupImage(0);
+
+      const languageButtons = document.querySelectorAll("[data-lang]");
+      const translatableElements = document.querySelectorAll("[data-lo][data-en]");
+      let currentLanguage = "lo";
+
+      try {
+        const savedLanguage = localStorage.getItem("glp-lang");
+        if (savedLanguage === "lo" || savedLanguage === "en") {
+          currentLanguage = savedLanguage;
+        }
+      } catch (error) {
+        console.warn("Could not read the saved language preference.", error);
+      }
+
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        translatableElements.forEach((element) => {
+          element.textContent = element.dataset[language];
+        });
+        languageButtons.forEach((button) => {
+          const isActive = button.dataset.lang === language;
+          button.setAttribute("aria-pressed", String(isActive));
+          button.classList.toggle("act", isActive);
+        });
+      }
+
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const language = button.dataset.lang;
+          setLanguage(language);
+          try {
+            localStorage.setItem("glp-lang", language);
+          } catch (error) {
+            console.warn("Could not save the language preference.", error);
+          }
+        });
+      });
+      setLanguage(currentLanguage);
+
+      const cleanupCounters = document.querySelectorAll("[data-count]");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+
+      cleanupCounters.forEach((counter) => {
+        const target = Number(counter.dataset.count);
+        const prefix = counter.dataset.prefix || "";
+
+        if (prefersReducedMotion) {
+          counter.textContent = `${prefix}${target}`;
+          return;
+        }
+
+        const duration = 1200;
+        const startTime = performance.now();
+        counter.textContent = `${prefix}0`;
+
+        function updateCounter(currentTime) {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const value = Math.floor(target * progress);
+          counter.textContent = `${prefix}${progress === 1 ? target : value}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
+        }
+
+        requestAnimationFrame(updateCounter);
+      });
+    </script>
+  </body>
+</html>

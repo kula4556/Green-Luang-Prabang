@@ -1,0 +1,1927 @@
+<!doctype html>
+<html lang="lo">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Green Luang Prabang</title>
+    <meta
+      name="description"
+      content="Green Luang Prabang brings people together to reduce waste, protect nature and turn discarded materials into opportunities for local communities."
+    />
+    <meta property="og:title" content="Green Luang Prabang" />
+    <meta
+      property="og:description"
+      content="A greener Luang Prabang starts with us."
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      try {
+        if (sessionStorage.getItem("glp-intro"))
+          document.documentElement.classList.add("seen");
+      } catch (e) {}
+      document.documentElement.classList.add("js");
+    </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/phetsarath" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: "#0d4a34",
+              deep: "#0a3b2a",
+              leaf: "#3f8f5a",
+              mist: "#bfe3e8",
+              paper: "#fbfaf6",
+              sand: "#efece0",
+              earth: "#8a5a2b",
+            },
+            fontFamily: {
+              sans: ["Phetsarath", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", "Phetsarath", sans-serif;
+        background-color: #fff;
+      }
+
+      body.font-sans {
+        font-family: "Plus Jakarta Sans", "Phetsarath", sans-serif;
+      }
+
+      .bg-nature-gradient {
+        background: #fff;
+      }
+
+      .hero-section {
+        isolation: isolate;
+        background: #fbfaf6;
+        color: #0a3b2a;
+      }
+
+      .hero-image-mask {
+        -webkit-mask-image:
+          linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.15) 15%,
+            rgba(0, 0, 0, 0.65) 40%,
+            #000 75%
+          ),
+          linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 15%,
+            #000 85%,
+            transparent 100%
+          );
+        -webkit-mask-composite: source-in;
+        mask-image:
+          linear-gradient(
+            to right,
+            transparent 0%,
+            rgba(0, 0, 0, 0.15) 15%,
+            rgba(0, 0, 0, 0.65) 40%,
+            #000 75%
+          ),
+          linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 15%,
+            #000 85%,
+            transparent 100%
+          );
+        mask-composite: intersect;
+      }
+
+      .hero-fog-left,
+      .hero-fog-edges {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .hero-fog-left {
+        background: linear-gradient(
+          to right,
+          #fbfaf6 0%,
+          rgba(251, 250, 246, 0.9) 18%,
+          rgba(251, 250, 246, 0.7) 40%,
+          rgba(251, 250, 246, 0.1) 70%,
+          transparent 100%
+        );
+      }
+
+      .hero-fog-edges {
+        background: linear-gradient(
+          to bottom,
+          rgba(251, 250, 246, 0.1) 0%,
+          transparent 16%,
+          transparent 82%,
+          #fbfaf6 100%
+        );
+      }
+
+      .hero-mist {
+        position: absolute;
+        z-index: 3;
+        border-radius: 9999px;
+        filter: blur(48px);
+        pointer-events: none;
+        animation: mistFloat 18s ease-in-out infinite;
+      }
+
+      .hero-mist-one {
+        top: -5rem;
+        right: 25%;
+        width: min(600px, 70vw);
+        aspect-ratio: 1;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.15),
+          rgba(251, 250, 246, 0.1),
+          transparent
+        );
+      }
+
+      .hero-mist-two {
+        right: 2.5rem;
+        bottom: 2.5rem;
+        width: min(500px, 60vw);
+        aspect-ratio: 1;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(251, 250, 246, 0.1),
+          transparent
+        );
+        animation-delay: -9s;
+      }
+
+      @keyframes mistFloat {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 0.75;
+        }
+        50% {
+          transform: translate(-25px, 15px) scale(1.08);
+          opacity: 0.9;
+        }
+        100% {
+          transform: translate(0, 0) scale(1);
+          opacity: 0.75;
+        }
+      }
+
+      /* Card backdrop blur with subtle shadow */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow:
+          0 10px 30px -5px rgba(0, 0, 0, 0.04),
+          0 4px 12px -2px rgba(0, 0, 0, 0.02);
+      }
+
+      .glass-card:hover {
+        box-shadow:
+          0 20px 35px -5px rgba(45, 80, 45, 0.08),
+          0 8px 16px -4px rgba(0, 0, 0, 0.03);
+      }
+
+      .brush-badge {
+        background: #2d8a39;
+        border-radius: 40px 15px 45px 12px / 15px 40px 12px 45px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .shadow-custom {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px);
+      }
+
+      .community-badge-glass {
+        background-color: rgba(251, 250, 246, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(13, 74, 52, 0.1);
+      }
+
+      @keyframes aboutImageTransition {
+        from {
+          transform: scale(1.025);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .about-image-transition {
+        transform-origin: center;
+        animation: aboutImageTransition 300ms ease-out;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .about-image-transition {
+          animation: none;
+        }
+      }
+
+      main > section {
+        background: #fbfaf6;
+      }
+
+      .bg-brand-offwhite:not(section) {
+        border-color: rgba(13, 74, 52, 0.1);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      .issues-link-button {
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.3);
+        box-shadow:
+          inset 0 0 15px rgba(255, 255, 255, 0.02),
+          inset 0 0 8px rgba(147, 251, 213, 0.06),
+          0 8px 24px rgba(13, 74, 52, 0.1);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+      }
+
+      .issues-link-button:hover,
+      .issues-link-button:focus-visible {
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow:
+          inset 0 2px 8px rgba(255, 255, 255, 0.9),
+          inset 0 -2px 8px rgba(13, 74, 52, 0.04),
+          0 12px 28px rgba(13, 74, 52, 0.14);
+      }
+
+      #Issues .issue-card:hover,
+      #Issues .issue-card:focus-within {
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 18px 36px rgba(13, 74, 52, 0.16);
+        transform: translateY(-4px);
+      }
+
+      .values-mindmap {
+        position: relative;
+        display: grid;
+        gap: 1.5rem 0;
+      }
+
+      .values-mindmap::before {
+        position: absolute;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(to bottom, #34d399, #0d4a34 50%, #a3e635);
+        content: "";
+        transform: translateX(-50%);
+      }
+
+      .value-branch-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 3rem minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .value-branch {
+        position: relative;
+        padding: 1.25rem;
+        border: 1px solid rgba(13, 74, 52, 0.12);
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 8px 24px rgba(13, 74, 52, 0.07);
+      }
+
+      .value-branch::before {
+        position: absolute;
+        top: 50%;
+        width: 1.5rem;
+        height: 2px;
+        background: var(--branch-color);
+        content: "";
+      }
+
+      .value-branch-left {
+        grid-column: 1;
+      }
+
+      .value-branch-left::before {
+        right: -1.5rem;
+      }
+
+      .value-branch-right {
+        grid-column: 3;
+      }
+
+      .value-branch-right::before {
+        left: -1.5rem;
+      }
+
+      .value-branch-responsibility {
+        --branch-color: #059669;
+      }
+
+      .value-branch-respect {
+        --branch-color: #0284c7;
+      }
+
+      .value-branch-volunteers {
+        --branch-color: #d97706;
+      }
+
+      .value-branch-sustainability {
+        --branch-color: #65a30d;
+      }
+
+      .value-branch-icon {
+        color: var(--branch-color);
+      }
+
+      .value-map-node {
+        z-index: 1;
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        width: 1rem;
+        height: 1rem;
+        border: 3px solid #fbfaf6;
+        border-radius: 9999px;
+        background: var(--branch-color);
+        box-shadow: 0 0 0 2px var(--branch-color);
+      }
+
+      .text-brand-800 {
+        color: #0a3b2a;
+      }
+
+      .text-slate-600 {
+        color: rgba(10, 59, 42, 0.72);
+      }
+
+      #about .bg-white,
+      #gallery .gallery-item {
+        border-color: rgba(13, 74, 52, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      #projects button,
+      #projects .project-details-link,
+      #Issues button {
+        border-color: #0d4a34;
+        color: #0d4a34;
+        transition:
+          color 180ms ease,
+          background-color 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease;
+      }
+
+      #projects button:hover,
+      #projects .project-details-link:hover,
+      #Issues button:hover {
+        background-color: #0d4a34;
+        color: #fff;
+        border-color: #0d4a34;
+        box-shadow: inset 0 2px 15px rgb(255, 255, 255, 1),
+              inset 0 0 30px rgba(235, 239, 238, 0.2);
+        transform: translateY(-1px);
+      }
+
+      #projects .button {
+        box-shadow:
+          inset 0 0 10px rgba(218, 230, 225, 1),
+          inset 0 0 30px rgba(235, 239, 238, 0.06);
+      }
+
+      #projects button:hover .project-button-icon {
+        transform: translateX(4px) rotate(-45deg);
+      }
+
+      #projects .project-details-link:hover .project-button-icon {
+        transform: translateX(4px) rotate(-45deg);
+      }
+
+      #home a[href="#projects"]:hover .project-button-icon,
+      #home a[href="#projects"]:focus-visible .project-button-icon {
+        transform: translateX(4px) rotate(-45deg);
+      }
+
+      .hero-donate-icon {
+        display: inline-block;
+        transform-origin: center;
+      }
+
+      #home .hero-donate-button:hover .hero-donate-icon,
+      #home .hero-donate-button:focus-visible .hero-donate-icon {
+        animation: donateHeartBeat 600ms ease-in-out infinite;
+      }
+
+      @keyframes donateHeartBeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        35% {
+          transform: scale(1.3);
+        }
+        65% {
+          transform: scale(1.1);
+        }
+      }
+
+      .scroll-indicator-arrow {
+        animation: scrollArrowBounce 1.4s ease-in-out infinite;
+      }
+
+      .hero-scroll-cue {
+        left: 50%;
+        flex-direction: column;
+        transform: translateX(-50%);
+      }
+
+      @keyframes scrollArrowBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(4px);
+        }
+      }
+
+      #hd.s {
+        background-color: rgba(251, 250, 246, 0.1);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(13, 74, 52, 0.1);
+        color: #0d4a34;
+        box-shadow: 0 8px 24px rgba(13, 74, 52, 0.08);
+      }
+
+      #hd.s > div:first-child {
+        background: transparent;
+      }
+
+      #hd .cta {
+        background-color: #065f46;
+        color: #fff;
+        transition: background-color 300ms ease;
+      }
+
+      #mb svg path {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition:
+          transform 250ms ease,
+          opacity 180ms ease;
+      }
+
+      #mb[aria-expanded="true"] svg path:first-child {
+        transform: translateY(5px) rotate(45deg);
+      }
+
+      #mb[aria-expanded="true"] svg path:nth-child(2) {
+        opacity: 0;
+      }
+
+      #mb[aria-expanded="true"] svg path:last-child {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+
+      :focus-visible {
+        outline-color: #3f8f5a;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #projects button,
+        #Issues button,
+        .hero-mist,
+        .project-button-icon,
+        .hero-donate-icon,
+        .scroll-indicator-arrow,
+        #mb svg path {
+          transition: none;
+          animation: none;
+        }
+      }
+
+      #gallery-filters
+        .gallery-filter-btn[aria-pressed="true"]:not(
+          [data-filter="all"]
+        )::after {
+        background-color: #0d4a34;
+      }
+
+      .donation-hero-badge {
+        background: rgba(191, 227, 232, 0.45);
+        border: 1px solid rgba(13, 74, 52, 0.1);
+        box-shadow: 0 8px 24px rgba(13, 74, 52, 0.08);
+      }
+
+      .donation-hero-underline {
+        filter: drop-shadow(0 8px 14px rgba(13, 74, 52, 0.12));
+      }
+
+      .donation-process-step {
+        position: relative;
+      }
+
+      .donation-process-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -0.8rem;
+        top: 1.6rem;
+        width: 1.1rem;
+        height: 2px;
+        background: rgba(13, 74, 52, 0.35);
+      }
+
+      #lang-switch::before {
+        content: "";
+        position: absolute;
+        top: 0.25rem;
+        bottom: 0.25rem;
+        left: 0.25rem;
+        width: calc((100% - 0.5rem) / 2);
+        border-radius: 9999px;
+        background-color: #064e3b;
+        transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        pointer-events: none;
+      }
+
+      #lang-switch:has([data-lang="en"].act)::before {
+        transform: translateX(100%);
+      }
+
+      #lang-switch [data-lang] {
+        position: relative;
+        z-index: 1;
+        transition: color 300ms ease;
+      }
+
+      #lang-switch [data-lang].act {
+        background-color: transparent;
+        transition: all 300ms ease;
+        color: #fff;
+      }
+
+      @media (max-width: 640px) {
+        .donation-process-step:not(:last-child)::after {
+          display: none;
+        }
+
+        .values-mindmap {
+          gap: 1rem;
+          padding-left: 0.25rem;
+        }
+
+        .values-mindmap::before {
+          left: 1rem;
+        }
+
+        .value-branch-row {
+          grid-template-columns: 2rem minmax(0, 1fr);
+        }
+
+        .value-branch {
+          grid-column: 2;
+        }
+
+        .value-branch::before {
+          right: auto;
+          left: -1rem;
+          width: 1rem;
+        }
+
+        .value-map-node {
+          grid-column: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-deep antialiased">
+    <!-- INTROSCREEN -->
+    <div
+      id="intro"
+      class="fixed inset-0 z-50 overflow-hidden bg-deep text-white"
+      role="dialog"
+      aria-label="Green Luang Prabang"
+    >
+      <img
+        id="ibg"
+        src="Images/cj-fFL5K3A3uGo-unsplash.jpg"
+        alt="Luang Prabang"
+        aria-hidden="true"
+        fetchpriority="high"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-b from-deep/40 via-deep/45 to-deep/80"
+      ></div>
+      <button
+        id="skip"
+        class="cta absolute bg-rgba(255, 255, 255, 0.08) text-white right-5 top-5 z-10 rounded-full border border-white/50 bg-transparent px-5 py-2 text-sm font-semibold sm:right-12 sm:top-8 transition-all duration-500 hover:bg-white hover:text-green-900"
+        data-i18n="skip"
+      ></button>
+      <div
+        class="relative flex h-full flex-col items-center justify-center px-6 text-center"
+      >
+        <p
+          class="a1 text-sm font-semibold tracking-[.3em] text-white/75"
+          data-i18n="i_loc"
+        ></p>
+        <h1
+          class="a2 mt-5 text-[clamp(2.5rem,8vw,5.5rem)] font-bold leading-tight drop-shadow-lg"
+        >
+          Green Luang Prabang
+        </h1>
+        <p
+          class="a3 mt-3 text-xl text-white/85 sm:text-2xl"
+          data-i18n="i_tag"
+        ></p>
+        <button
+          id="enter"
+          class="a4 cta mt-10 rounded-full px-9 py-4 text-lg font-semibold shadow-xl transition-all duration-300 hover:-translate-y-1"
+          style="background: #f6f7fb; color: #0d4a34"
+          data-i18n="i_btn"
+        ></button>
+      </div>
+    </div>
+
+    <!-- HEADER -->
+    <header
+      id="hd"
+      class="fixed inset-x-0 top-0 z-40 text-emerald-900 bg-paper/93 backdrop-blur-md transition-colors duration-300"
+    >
+      <div
+        class="mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-6 sm:px-12"
+      >
+        <a href="#home" class="flex items-center gap-3">
+          <span
+            class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-current/40 bg-white/10 p-0.5"
+            ><img
+              src="Images/Green LPB _ without background (1).png"
+              alt="Green Luang Prabang"
+            />
+          </span>
+          <span class="leading-tight"
+            ><b class="block text-lg font-semibold sm:text-xl"
+              >Green Luang Prabang</b
+            ><small class="text-xs tracking-widest opacity-70"
+              >LAOS · ລາວ</small
+            ></span
+          >
+        </a>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <div
+            id="lang-switch"
+            class="relative grid grid-cols-2 rounded-full border border-current/30 p-1 text-sm font-semibold"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              data-lang="lo"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+            >
+              ລາວ</button
+            ><button
+              data-lang="en"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+            >
+              EN
+            </button>
+          </div>
+          <button
+            class="cta hidden rounded-full px-6 py-3 text-sm font-semibold sm:block"
+            data-donate
+            data-i18n="donate"
+          ></button>
+          <button
+            id="mb"
+            class="grid h-12 w-12 place-items-center rounded-full border border-current/40"
+            aria-expanded="false"
+            aria-controls="mp"
+            aria-label="Menu"
+          >
+            <svg
+              class="h-6 w-6"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M4 7h16" />
+              <path d="M4 12h16" />
+              <path d="M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav
+        id="mp"
+        class="absolute right-4 top-24 hidden w-72 rounded-3xl bg-deep p-3 text-white shadow-2xl sm:right-12"
+        aria-label="Main"
+      ></nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section
+        id="home"
+        class="hero-section relative flex min-h-screen items-center overflow-hidden pb-24 pt-28"
+      >
+        <img
+          id="plx"
+          src="Images/pexels-roman-odintsov-4553124.jpg"
+          alt="Luang Prabang"
+          aria-hidden="true"
+          class="hero-image-mask absolute left-0 top-[-8%] h-[116%] w-full object-cover will-change-transform"
+        />
+        <div class="hero-fog-left z-1" aria-hidden="true"></div>
+        <div class="hero-fog-edges z-2" aria-hidden="true"></div>
+        <div class="hero-mist hero-mist-one" aria-hidden="true"></div>
+        <div class="hero-mist hero-mist-two" aria-hidden="true"></div>
+        <div
+          class="absolute right-[8%] top-24 z-4 hidden h-34 w-34 rounded-full border border-deep/20 lg:block"
+          aria-hidden="true"
+        ></div>
+        <svg
+          class="fl absolute right-[18%] top-[30%] z-4 hidden h-10 w-20 text-leaf/70 md:block"
+          aria-hidden="true"
+        >
+          <use href="#lf" />
+        </svg>
+        <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-12">
+          <p
+            class="flex items-center gap-4 text-sm font-bold tracking-wider text-deep/75"
+          >
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-solid border-deep/20 bg-white/10 px-4 py-1 shadow-[inset_0_0_8px_rgba(0,0,0,0.15)]"
+              ><i
+                class="fa-solid fa-tree text-emerald-700 text-xl"
+                aria-hidden="true"
+              ></i
+              ><span data-i18n="eyebrow"></span
+            ></span>
+          </p>
+          <h2 class="mt-8 max-w-2xl text-5xl font-bold leading-[1.2] space-y-2">
+            <span class="block" data-i18n="h1"></span>
+            <span class="block" data-i18n="h2"></span>
+          </h2>
+          <p
+            class="mt-4 max-w-xl text-lg font-medium leading-relaxed text-gray-600 sm:text-xl"
+            data-i18n="sub"
+          ></p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 rounded-full bg-forest px-8 py-4 font-semibold text-white shadow-[inset_0_0_15px_white] transition duration-300 hover:bg-leaf"
+            >
+              <span data-i18n="explore"></span>
+              <i
+                class="project-button-icon ri-arrow-right-line"
+                aria-hidden="true"
+              ></i>
+            </a>
+            <button
+              data-donate
+              class="hero-donate-button inline-flex items-center gap-2 rounded-full border border-deep/40 px-8 py-4 font-semibold text-deep transition duration-300 hover:transform hover:-translate-y-0.5"
+            >
+              <span data-i18n="donate"></span>
+              <i class="hero-donate-icon ri-heart-line" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+        <a
+          href="#about"
+          class="hero-scroll-cue absolute bottom-2 z-10 flex items-center text-sm font-medium text-deep/90"
+          ><span data-i18n="scroll"></span
+          ><i
+            class="scroll-indicator-arrow fa-solid fa-angle-down text-xl"
+            aria-hidden="true"
+          ></i
+        ></a>
+      </section>
+      <!-- ABOUT -->
+      <section id="about" class="py-20 border-b border-emerald-900/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="text-xs uppercase tracking-widest text-emerald-800 font-bold"
+              data-i18n="about_t"
+            ></span>
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-emerald-800"
+              data-i18n="aboutHeading"
+            ></h2>
+            <div class="w-16 h-1 bg-emerald-700 mx-auto rounded-full"></div>
+          </div>
+          <!-- Content Grid 2 Columns -->
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-2 text-deep/75">
+              <h3
+                class="text-2xl font-bold text-emerald-900 py-1"
+                data-i18n="whyNeedAction"
+              ></h3>
+              <p
+                class="leading-relaxed font-normal"
+                data-i18n="aboutStoryP1"
+              ></p>
+              <p
+                class="leading-relaxed font-normal"
+                data-i18n="aboutStoryP2"
+              ></p>
+              <!-- Mission & Vision Cards -->
+              <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div
+                  class="mission-vision-card rounded-2xl border border-emerald-900/10 bg-brand-offwhite p-5 shadow-sm space-y-2"
+                >
+                  <div class="flex items-center gap-2 text-brand-800 font-bold">
+                    <i
+                      class="fa-solid fa-bullseye text-xl text-emerald-600"
+                      aria-hidden="true"
+                    ></i>
+                    <span data-i18n="mis_t"></span>
+                  </div>
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 leading-relaxed"
+                    data-i18n="mis"
+                  ></p>
+                </div>
+                <div
+                  class="mission-vision-card rounded-2xl border border-emerald-900/10 bg-brand-offwhite p-5 shadow-[inset_0_0_10px_0_rgba(0,0,0,0.1)] space-y-2"
+                >
+                  <div class="flex items-center gap-2 text-brand-800 font-bold">
+                    <i
+                      class="ri-eye-line text-xl text-emerald-600"
+                      aria-hidden="true"
+                    ></i>
+                    <span data-i18n="vis_t"></span>
+                  </div>
+                  <p
+                    class="text-xs sm:text-sm text-slate-600 leading-relaxed"
+                    data-i18n="vis"
+                  ></p>
+                </div>
+              </div>
+              <a
+                href="#Issues"
+                class="issues-link-button group mt-5 inline-flex items-center gap-3 rounded-full px-6 py-3 font-semibold text-emerald-900 transition-[transform,background-color,box-shadow] duration-300 hover:translate-x-1 focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:focus-visible:translate-x-0"
+              >
+                <span data-i18n="aboutIssuesButton"></span>
+                <i
+                  class="ri-arrow-right-line transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+            <!-- Feature Image Card -->
+            <div class="relative">
+              <div
+                class="group relative aspect-4/3 overflow-hidden rounded-3xl border border-white/60 shadow-2xl"
+                role="region"
+                aria-label="About community waste activities"
+                aria-roledescription="carousel"
+              >
+                <img
+                  id="about-image"
+                  src="Images_about_waste/798826055_1790339829083434_6621362589083271894_n.png"
+                  alt="Community environmental activities in Luang Prabang"
+                  class="h-full w-full object-cover"
+                />
+                <button
+                  type="button"
+                  id="about-image-prev"
+                  class="absolute left-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border border-white/50 bg-white/25 text-lg text-deep shadow-lg backdrop-blur-md transition-[background-color,transform] duration-300 hover:-translate-x-1 hover:bg-white focus-visible:bg-white motion-reduce:transition-none motion-reduce:hover:translate-x-0 sm:left-4 sm:h-10 sm:w-10 sm:text-xl"
+                  aria-label="Previous image"
+                  aria-controls="about-image"
+                >
+                  <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  id="about-image-next"
+                  class="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border border-white/50 bg-white/25 text-lg text-deep shadow-lg backdrop-blur-md transition-[background-color,transform] duration-300 hover:translate-x-1 hover:bg-white focus-visible:bg-white motion-reduce:transition-none motion-reduce:hover:translate-x-0 sm:right-4 sm:h-10 sm:w-10 sm:text-xl"
+                  aria-label="Next image"
+                  aria-controls="about-image"
+                >
+                  <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+                </button>
+                <span
+                  id="about-image-status"
+                  class="sr-only"
+                  aria-live="polite"
+                ></span>
+              </div>
+              <div
+                class="glass-card community-badge-glass absolute -bottom-6 -left-6 p-6 rounded-2xl hidden sm:block max-w-auto text-deep transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:transform-none"
+              >
+                <div class="flex items-center gap-3">
+                  <i
+                    class="ri-shield-check-fill text-4xl text-brand-900 shrink-0"
+                  ></i>
+                  <p
+                    class="text-2xs font-normal leading-relaxed text-brand-800"
+                    data-i18n="communityBadge"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="value"
+        class="py-20 bg-brand-offwhite border-b border-emerald-900/5"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="text-xs uppercase tracking-widest text-emerald-700 font-bold"
+              data-i18n="value_t"
+            ></span>
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-brand-800"
+              data-i18n="valuesHeading"
+            ></h2>
+            <div class="w-16 h-1 bg-emerald-700 mx-auto rounded-full"></div>
+          </div>
+          <div class="values-mindmap mx-auto max-w-5xl">
+            <div class="value-branch-row value-branch-responsibility">
+              <article class="value-branch value-branch-right">
+                <div class="mb-2 flex items-center gap-3">
+                  <i
+                    class="value-branch-icon fa-solid fa-user-shield text-2xl"
+                    aria-hidden="true"
+                  ></i>
+                  <h3
+                    class="text-lg font-bold text-brand-800"
+                    data-i18n="first_value"
+                  ></h3>
+                </div>
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                  data-i18n="first_value_sub"
+                ></p>
+              </article>
+              <span class="value-map-node" aria-hidden="true"></span>
+            </div>
+            <div class="value-branch-row value-branch-respect">
+              <article class="value-branch value-branch-left">
+                <div class="mb-2 flex items-center gap-3">
+                  <i
+                    class="value-branch-icon fa-solid fa-handshake-angle text-2xl"
+                    aria-hidden="true"
+                  ></i>
+                  <h3
+                    class="text-lg font-bold text-brand-800"
+                    data-i18n="second_value"
+                  ></h3>
+                </div>
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                  data-i18n="second_value_sub"
+                ></p>
+              </article>
+              <span class="value-map-node" aria-hidden="true"></span>
+            </div>
+            <div class="value-branch-row value-branch-volunteers">
+              <article class="value-branch value-branch-right">
+                <div class="mb-2 flex items-center gap-3">
+                  <i
+                    class="value-branch-icon fa-solid fa-users text-2xl"
+                    aria-hidden="true"
+                  ></i>
+                  <h3
+                    class="text-lg font-bold text-brand-800"
+                    data-i18n="third_value"
+                  ></h3>
+                </div>
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                  data-i18n="third_value_sub"
+                ></p>
+              </article>
+              <span class="value-map-node" aria-hidden="true"></span>
+            </div>
+            <div class="value-branch-row value-branch-sustainability">
+              <article class="value-branch value-branch-left">
+                <div class="mb-2 flex items-center gap-3">
+                  <i
+                    class="value-branch-icon fa-solid fa-leaf text-2xl"
+                    aria-hidden="true"
+                  ></i>
+                  <h3
+                    class="text-lg font-bold text-brand-800"
+                    data-i18n="fourth_value"
+                  ></h3>
+                </div>
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                  data-i18n="fourth_value_sub"
+                ></p>
+              </article>
+              <span class="value-map-node" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- PROJECTS -->
+      <section
+        id="projects"
+        class="relative isolate overflow-hidden py-20 bg-brand-offwhite border-b border-emerald-900/5"
+      >
+        <div class="hero-mist hero-mist-one" aria-hidden="true"></div>
+        <div class="hero-mist hero-mist-two" aria-hidden="true"></div>
+        <div
+          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
+        >
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="text-xs uppercase tracking-widest text-emerald-700 font-bold"
+              data-i18n="proj_t"
+            ></span>
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-brand-800"
+              data-i18n="projectsHeading"
+            ></h2>
+            <p
+              class="text-slate-600 text-sm sm:text-base"
+              data-i18n="projectsSub"
+            ></p>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Project 1: Community Clean-Up -->
+            <div
+              class="rounded-3xl bg-brand-offwhite overflow-hidden border border-emerald-900/10 shadow-sm hover:shadow-md transition flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="h-48 bg-cover bg-center relative"
+                  style="
+                    background-image: url(Images_cleanup/854944080_1488870426418765_8871877238937711309_n.png);
+                  "
+                >
+                  <span
+                    class="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-[13px] font-bold text-deep shadow-[inset_0_1px_5px_rgba(255,255,255,1)] backdrop-blur-[1px]"
+                    ><i class="fa-solid fa-clock" aria-hidden="true"></i
+                    ><span data-i18n="statusActive"></span
+                  ></span>
+                </div>
+                <div class="project-card-copy relative isolate p-4 space-y-3">
+                  <div class="project-card-cloud" aria-hidden="true"></div>
+                  <h3
+                    class="text-xl font-bold text-brand-800"
+                    data-i18n="proj1Title"
+                  ></h3>
+                  <p
+                    class="text-sm text-slate-600 leading-relaxed"
+                    data-i18n="proj1Desc"
+                  ></p>
+                </div>
+              </div>
+              <div class="px-4 pb-4">
+                <a
+                  href="community-cleanup.html"
+                  class="project-details-link inline-flex w-full items-center justify-center gap-2 py-2.5 rounded-xl border border-brand-800 text-brand-800 hover:bg-brand-800 hover:text-white transition text-xs font-semibold"
+                >
+                  <span data-i18n="viewProject"></span>
+                  <i
+                    class="project-button-icon ri-arrow-right-line"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 2: Bottle Cap Upcycling -->
+            <div
+              class="rounded-3xl bg-brand-offwhite overflow-hidden border border-emerald-900/10 shadow-sm hover:shadow-md transition flex flex-col justify-between"
+            >
+              <div>
+                <div
+                  class="h-48 bg-cover bg-center relative"
+                  style="
+                    background-image: url(Images_donateTable/WhatsApp\ Image\ 2026-10-24\ at\ 14.22.43.jpeg);
+                  "
+                >
+                  <span
+                    class="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-[13px] font-bold text-deep shadow-[inset_0_1px_5px_rgba(255,255,255,1)] backdrop-blur-[1px]"
+                    ><i class="fa-solid fa-clock" aria-hidden="true"></i
+                    ><span data-i18n="statusActive"></span
+                  ></span>
+                </div>
+                <div class="project-card-copy relative isolate p-4 space-y-3">
+                  <div class="project-card-cloud" aria-hidden="true"></div>
+                  <h3
+                    class="text-xl font-bold text-brand-800"
+                    data-i18n="proj2Title"
+                  ></h3>
+                  <p
+                    class="text-sm text-slate-600 leading-relaxed"
+                    data-i18n="proj2Desc"
+                  ></p>
+                </div>
+              </div>
+              <div class="px-4 pb-4">
+                <a
+                  href="bottle-cap-upcycling.html"
+                  class="button project-details-link inline-flex w-full items-center justify-center gap-2 py-2.5 rounded-xl border border-brand-800 text-brand-800 hover:bg-brand-800 hover:text-white transition text-xs font-semibold"
+                >
+                  <span data-i18n="viewProject"></span>
+                  <i
+                    class="project-button-icon ri-arrow-right-line"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="Issues"
+        class="py-20 bg-brand-offwhite border-b border-emerald-900/5"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="text-xs uppercase tracking-widest text-emerald-700 font-bold"
+              data-i18n="issues_t"
+            ></span>
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-brand-800"
+              data-i18n="issuessHeading"
+            ></h2>
+          </div>
+          <div class="lg:flex justify-between md:grid gap-8">
+            <div
+              class="grid max-w-full h-fit md:grid-cols-2 lg:grid-cols-3 gap-3"
+            >
+              <!-- Project 1: Community Clean-Up -->
+              <div
+                class="issue-card group rounded-3xl bg-brand-offwhite overflow-hidden border border-emerald-900/10 shadow-sm transition-[background-color,box-shadow,transform] duration-300 motion-reduce:transition-none flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="h-60 bg-cover bg-start relative transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:transform-none"
+                    style="
+                      background-image: url(Images/WhatsApp\ Image\ 2026-10-25\ at\ 19.56.51.jpeg);
+                    "
+                  >
+                    <span
+                      class="absolute bottom-4 left-4 rounded-full border border-white/50 bg-white/50 px-3 py-1 text-[13px] font-bold text-brand-800 backdrop-blur-md"
+                    >
+                      <i class="ri-delete-bin-7-line"></i>
+                      <span data-i18n="Waste"></span>
+                    </span>
+                  </div>
+                  <div class="p-6 space-y-2">
+                    <h3
+                      class="relative inline-block text-xl font-bold text-brand-800 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-12 after:rounded-full after:bg-emerald-700 after:content-['']"
+                      data-i18n="issuess1Title"
+                    ></h3>
+                    <p
+                      class="text-sm text-slate-600 leading-relaxed"
+                      data-i18n="issues1Desc"
+                    ></p>
+                  </div>
+                </div>
+                <div class="p-6 pt-0">
+                  <a
+                    href="Waste.html"
+                    class="issues-link-button group inline-flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-brand-800 transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-visible:translate-y-0"
+                  >
+                    <i class="ri-external-link-line inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none" aria-hidden="true"></i>
+                    <span data-i18n="viewIssues"></span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Project 2: Bottle Cap Upcycling -->
+              <div
+                class="issue-card group rounded-3xl bg-brand-offwhite overflow-hidden border border-emerald-900/10 shadow-sm transition-[background-color,box-shadow,transform] duration-300 motion-reduce:transition-none flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="h-60 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:transform-none"
+                    style="
+                      background-image: url(Images/WhatsApp\ Image\ 2026-10-25\ at\ 20.59.51.jpeg);
+                    "
+                  >
+                    <span
+                      class="absolute bottom-4 left-4 rounded-full border border-white/50 bg-white/50 px-3 py-1 text-[13px] font-bold text-brand-800 backdrop-blur-md"
+                    >
+                      <i class="ri-contrast-drop-2-line"></i>
+                      <span data-i18n="Water"></span>
+                    </span>
+                  </div>
+                  <div class="p-6 space-y-2">
+                    <h3
+                      class="relative inline-block text-xl font-bold text-brand-800 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-12 after:rounded-full after:bg-emerald-700 after:content-['']"
+                      data-i18n="issues2Title"
+                    ></h3>
+                    <p
+                      class="text-sm text-slate-600 leading-relaxed"
+                      data-i18n="issues2Desc"
+                    ></p>
+                  </div>
+                </div>
+                <!-- Fixed: Changed pt-6 to pt-0 to match other cards -->
+                <div class="p-6 pt-0">
+                  <a
+                    href="water.html"
+                    class="issues-link-button group inline-flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-brand-800 transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-visible:translate-y-0"
+                  >
+                    <i class="ri-external-link-line inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none" aria-hidden="true"></i>
+                    <span data-i18n="viewIssues"></span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div
+                class="issue-card group rounded-3xl bg-brand-offwhite overflow-hidden border border-emerald-900/10 shadow-sm transition-[background-color,box-shadow,transform] duration-300 motion-reduce:transition-none flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="h-60 bg-cover bg-center relative transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:transform-none"
+                    style="
+                      background-image: url(Images/Delgado_Smog_1543-2048x1296.jpg);
+                    "
+                  >
+                    <span
+                      class="absolute bottom-4 left-4 rounded-full border border-white/50 bg-white/50 px-3 py-1 text-[13px] font-bold text-brand-800 backdrop-blur-md"
+                    >
+                      <i class="ri-cloud-windy-line"></i>
+                      <span data-i18n="Air"></span
+                    ></span>
+                  </div>
+                  <div class="p-6 space-y-2">
+                    <h3
+                      class="relative inline-block text-xl font-bold text-brand-800 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-12 after:rounded-full after:bg-emerald-700 after:content-['']"
+                      data-i18n="issues3Title"
+                    ></h3>
+                    <p
+                      class="text-sm text-slate-600 leading-relaxed"
+                      data-i18n="issues3Desc"
+                    ></p>
+                  </div>
+                </div>
+                <div class="p-6 pt-0">
+                  <a
+                    href="air.html"
+                    class="issues-link-button group inline-flex w-full items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-semibold text-brand-800 transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-visible:translate-y-0"
+                  >
+                    <i class="ri-external-link-line inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none" aria-hidden="true"></i>
+                    <span data-i18n="viewIssues"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-72 space-y-3 text-slate-600">
+              <h3
+                class="text-2xl font-bold text-brand-800 text-emerald-950"
+                data-i18n="issues_Infor_T"
+              ></h3>
+              <p class="leading-relaxed" data-i18n="issuesStoryP1"></p>
+              <p class="leading-relaxed" data-i18n="issuesStoryP2"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. GALLERY SECTION -->
+      <section id="gallery" class="py-20 bg-brand-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div class="text-center max-w-3xl mx-auto space-y-3">
+            <span
+              class="text-xs uppercase tracking-widest text-emerald-700 font-bold"
+              data-i18n="galleryTag"
+            ></span>
+            <h2
+              class="text-3xl sm:text-4xl font-bold text-brand-800"
+              data-i18n="galleryHeading"
+            ></h2>
+            <p
+              class="text-slate-600 text-sm sm:text-base"
+              data-i18n="galleryNote"
+            ></p>
+          </div>
+
+          <!-- Filter Buttons -->
+          <div
+            class="mx-auto flex w-fit max-w-full flex-nowrap items-center justify-start gap-0.5 overflow-x-auto rounded-full border border-emerald-900/10 scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            id="gallery-filters"
+          >
+            <button
+              type="button"
+              onclick="filterGallery('all')"
+              class="gallery-filter-btn relative flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-emerald-900/10 bg-emerald-800 px-5 py-2 text-ms font-semibold text-white shadow-sm transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:scale-[0.96] max-[480px]:px-[0.55rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.7rem] max-[480px]:leading-tight hover:motion-reduce:transition-none motion-reduce:active:scale-100"
+              data-filter="all"
+              aria-pressed="true"
+            >
+              <i class="ri-gallery-line" aria-hidden="true"></i>
+              <span data-i18n="filterAll"></span>
+            </button>
+            <button
+              onclick="filterGallery('cleanup')"
+              class="gallery-filter-btn relative shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-ms font-semibold text-emerald-800 transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:scale-[0.96] max-[480px]:px-[0.55rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.7rem] max-[480px]:leading-tight after:absolute after:right-5 after:bottom-[0.4rem] after:left-5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-emerald-800 after:content-[''] after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:after:scale-x-100 aria-pressed:after:scale-x-100 aria-pressed:after:bg-white max-[480px]:after:right-[0.55rem] max-[480px]:after:bottom-[0.3rem] max-[480px]:after:left-[0.55rem] motion-reduce:transition-none motion-reduce:active:scale-100 motion-reduce:after:transition-none"
+              data-filter="cleanup"
+              data-i18n="filterCleanup"
+              aria-pressed="false"
+            ></button>
+            <button
+              onclick="filterGallery('booth')"
+              class="gallery-filter-btn relative shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-ms font-semibold text-emerald-800 transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:scale-[0.96] max-[480px]:px-[0.55rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.7rem] max-[480px]:leading-tight after:absolute after:right-5 after:bottom-[0.4rem] after:left-5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-emerald-800 after:content-[''] after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:after:scale-x-100 aria-pressed:after:scale-x-100 aria-pressed:after:bg-white max-[480px]:after:right-[0.55rem] max-[480px]:after:bottom-[0.3rem] max-[480px]:after:left-[0.55rem] motion-reduce:transition-none motion-reduce:active:scale-100 motion-reduce:after:transition-none"
+              data-filter="booth"
+              data-i18n="filterBooth"
+              aria-pressed="false"
+            ></button>
+            <button
+              onclick="filterGallery('caps')"
+              class="gallery-filter-btn relative shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-ms font-semibold text-emerald-800 transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:scale-[0.96] max-[480px]:px-[0.55rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.7rem] max-[480px]:leading-tight after:absolute after:right-5 after:bottom-[0.4rem] after:left-5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-emerald-800 after:content-[''] after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:after:scale-x-100 aria-pressed:after:scale-x-100 aria-pressed:after:bg-white max-[480px]:after:right-[0.55rem] max-[480px]:after:bottom-[0.3rem] max-[480px]:after:left-[0.55rem] motion-reduce:transition-none motion-reduce:active:scale-100 motion-reduce:after:transition-none"
+              data-filter="caps"
+              data-i18n="filterCaps"
+              aria-pressed="false"
+            ></button>
+            <button
+              onclick="filterGallery('education')"
+              class="gallery-filter-btn relative shrink-0 whitespace-nowrap rounded-full px-5 py-2 text-ms font-semibold text-emerald-800 transition-[color,background-color,border-color,box-shadow,transform] duration-200 active:scale-[0.96] max-[480px]:px-[0.55rem] max-[480px]:py-[0.4rem] max-[480px]:text-[0.7rem] max-[480px]:leading-tight after:absolute after:right-5 after:bottom-[0.4rem] after:left-5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-emerald-800 after:content-[''] after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:after:scale-x-100 aria-pressed:after:scale-x-100 aria-pressed:after:bg-white max-[480px]:after:right-[0.55rem] max-[480px]:after:bottom-[0.3rem] max-[480px]:after:left-[0.55rem] motion-reduce:transition-none motion-reduce:active:scale-100 motion-reduce:after:transition-none"
+              data-filter="education"
+              data-i18n="filterEdu"
+              aria-pressed="false"
+            ></button>
+          </div>
+
+          <!-- Gallery Grid -->
+          <div
+            class="grid sm:grid-cols-2 md:grid-cols-2 gap-6"
+            id="gallery-grid"
+          >
+            <div
+              class="gallery-item cleanup rounded-3xl overflow-hidden shadow-sm bg-white border border-emerald-900/10 group cursor-pointer"
+            >
+              <div
+                class="relative h-64 bg-cover bg-center transition transform group-hover:scale-105 duration-500"
+                style="
+                  background-image: url(Images_cleanup/832819428_1654885873006871_7689622961727614658_n.jpg);
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/30"
+                ></span>
+                <div
+                  class="absolute inset-x-0 bottom-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-transparent p-4 pt-12"
+                >
+                  <h4
+                    class="text-xl leading-tight uppercase font-bold text-white"
+                    data-i18n="Cleanup_T"
+                  ></h4>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item booth rounded-3xl overflow-hidden shadow-sm bg-white border border-emerald-900/10 group cursor-pointer"
+            >
+              <div
+                class="relative h-64 bg-cover bg-center transition transform group-hover:scale-105 duration-500"
+                style="
+                  background-image: url(Images_booth/WhatsApp\ Image\ 2026-10-29\ at\ 12.49.04.jpeg);
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/30"
+                ></span>
+                <div
+                  class="absolute inset-x-0 bottom-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-transparent p-4 pt-12"
+                >
+                  <h4
+                    class="text-xl leading-tight uppercase font-bold text-white"
+                    data-i18n="Booth_T"
+                  ></h4>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item caps rounded-3xl overflow-hidden shadow-sm bg-white border border-emerald-900/10 group cursor-pointer"
+            >
+              <div
+                class="relative h-64 bg-cover bg-center transition transform group-hover:scale-105 duration-500"
+                style="
+                  background-image: url(Images_collectCaps/799142879_1632444705250988_4724820050884289470_n.jpg);
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/30"
+                ></span>
+                <div
+                  class="absolute inset-x-0 bottom-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-transparent p-4 pt-12"
+                >
+                  <h4
+                    class="text-xl leading-tight uppercase font-bold text-white"
+                    data-i18n="Caps_T"
+                  ></h4>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item education rounded-3xl overflow-hidden shadow-sm bg-white border border-emerald-900/10 group cursor-pointer"
+            >
+              <div
+                class="relative h-64 bg-cover bg-center transition transform group-hover:scale-105 duration-500"
+                style="
+                  background-image: url(Images_donateTable/WhatsApp\ Image\ 2026-10-29\ at\ 13.06.20.jpeg);
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/30"
+                ></span>
+                <div
+                  class="absolute inset-x-0 bottom-0 z-10 bg-linear-to-t from-black/80 via-black/30 to-transparent p-4 pt-12"
+                >
+                  <h4
+                    class="text-xl leading-tight uppercase font-bold text-white"
+                    data-i18n="TableDonate_T"
+                  ></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DONATE BOTTLE CAPS -->
+      <section id="donate" class="bg-paper py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-12">
+          <div class="relative isolate overflow-hidden rounded-[2.5rem] border border-deep/10 bg-white p-6 shadow-xl shadow-deep/10 sm:p-10 lg:p-14">
+            <div class="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-leaf/10 blur-3xl" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-mist/35 blur-3xl" aria-hidden="true"></div>
+            <div
+              class="relative z-10 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14"
+            >
+            <div data-r class="space-y-6">
+              <div
+                class="donation-hero-badge inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-forest"
+              >
+                <i
+                  class="fa-solid fa-heart text-forest"
+                  aria-hidden="true"
+                ></i>
+                <span data-i18n="donate_eyebrow"></span>
+              </div>
+
+              <h2
+                class="font-black leading-tight text-deep sm:text-5xl lg:text-6xl"
+              >
+                <span data-i18n="donate_heading"></span>
+                <span class="relative inline-block text-emerald-700">
+                  <span data-i18n="donate_heading_2"></span>
+                </span>
+                <span class="ml-2 inline-block text-leaf">
+                  <i class="fa-regular fa-heart text-3xl sm:text-4xl"></i>
+                </span>
+              </h2>
+
+              <p
+                class="max-w-xl text-lg font-medium leading-relaxed text-deep/75 sm:text-xl"
+                data-i18n="donate_description"
+              ></p>
+
+              <div
+                class="grid max-w-xl grid-cols-4 gap-2 pt-4 text-center sm:gap-4"
+              >
+                <div class="donation-process-step flex flex-col items-center">
+                  <div
+                    class="mb-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-[#189cc4] text-2xl text-white shadow-md sm:h-16 sm:w-16"
+                  >
+                    <i
+                      class="fa-solid fa-bottle-droplet"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold leading-tight text-deep sm:text-sm"
+                    data-i18n="donate_step_collect"
+                  ></span>
+                </div>
+
+                <div class="donation-process-step flex flex-col items-center">
+                  <div
+                    class="mb-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-leaf text-2xl text-white shadow-md sm:h-16 sm:w-16"
+                  >
+                    <i class="fa-solid fa-recycle" aria-hidden="true"></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold leading-tight text-deep sm:text-sm"
+                    data-i18n="donate_step_recycle"
+                  ></span>
+                </div>
+
+                <div class="donation-process-step flex flex-col items-center">
+                  <div
+                    class="mb-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-[#F2B400] text-2xl text-white shadow-md sm:h-16 sm:w-16"
+                  >
+                    <i class="fa-solid fa-chair" aria-hidden="true"></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold leading-tight text-deep sm:text-sm"
+                    data-i18n="donate_step_create"
+                  ></span>
+                </div>
+
+                <div class="donation-process-step flex flex-col items-center">
+                  <div
+                    class="mb-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-white bg-[#c80014] text-2xl text-white shadow-md sm:h-16 sm:w-16"
+                  >
+                    <i class="fa-solid fa-school-flag"></i>
+                  </div>
+                  <span
+                    class="text-xs font-bold leading-tight text-deep sm:text-sm"
+                    data-i18n="donate_step_green"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <div
+                  class="inline-flex items-center gap-3 rounded-full bg-mist/50 px-6 py-3 text-lg font-bold text-forest sm:text-xl"
+                >
+                  <i
+                    class="fa-solid fa-seedling text-forest"
+                    aria-hidden="true"
+                  ></i>
+                  <span data-i18n="donate_banner"></span>
+                </div>
+              </div>
+            </div>
+
+            <div data-r>
+              <div
+                class="glass-card rounded-3xl border border-deep/10 p-6 shadow-lg shadow-deep/5 sm:p-8"
+              >
+                <div class="mb-6 flex items-start gap-3">
+                  <div
+                    class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-mist/50 text-2xl text-forest"
+                  >
+                    <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-2xl font-extrabold text-deep sm:text-3xl"
+                      data-i18n="donate_shipping_title"
+                    ></h3>
+                    <p
+                      class="mt-1 text-sm font-medium text-deep/60"
+                      data-i18n="donate_shipping_carrier"
+                    ></p>
+                  </div>
+                </div>
+
+                <div class="mb-4 flex items-center gap-2 text-forest">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  <h4
+                    class="text-sm font-extrabold uppercase tracking-wide"
+                    data-i18n="donate_shipping_region"
+                  ></h4>
+                </div>
+
+                <div class="grid gap-3">
+                  <div
+                    class="flex items-start gap-3 rounded-2xl border border-deep/10 bg-white/80 p-4"
+                  >
+                    <span
+                      class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-mist/50 font-extrabold text-forest"
+                      >1</span
+                    >
+                    <p
+                      class="pt-1 text-sm font-semibold leading-relaxed text-deep"
+                      data-i18n="donate_shipping_step_one"
+                    ></p>
+                  </div>
+                  <div
+                    class="flex items-start gap-3 rounded-2xl border border-deep/10 bg-paper p-4"
+                  >
+                    <span
+                      class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-mist/50 font-extrabold text-forest"
+                      >2</span
+                    >
+                    <div
+                      class="pt-1 text-sm font-semibold leading-relaxed text-deep"
+                    >
+                      <p data-i18n="donate_shipping_address"></p>
+                      <p class="mt-2">
+                        <span data-i18n="donate_shipping_phone_label"></span>
+                        <a
+                          class="underline underline-offset-2"
+                          href="tel:+8562023246519"
+                          >020 2324 6519</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex flex-1 items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#0165E1] to-[#17A9FD] px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-leaf"
+                  >
+                    <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                    <span data-i18n="donate_facebook"></span>
+                    <i
+                      class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                  <a
+                    href="https://wa.me/8562078737966"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex flex-1 items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#25D366] to-[#128C7E] px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-leaf"
+                  >
+                    <i
+                      class="fa-brands fa-whatsapp text-lg"
+                      aria-hidden="true"
+                    ></i>
+                    <span data-i18n="donate_whatsapp"></span>
+                    <i
+                      class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"
+                      aria-hidden="true"
+                    ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-deep py-12 text-white sm:py-14">
+      <div id="fx" class="mx-auto max-w-7xl px-4 sm:px-12">
+        <div class="mb-10 grid grid-cols-1 items-start gap-8 md:grid-cols-12">
+          <div
+            class="flex flex-col items-start gap-5 sm:flex-row sm:gap-7 md:col-span-7"
+          >
+            <a
+              href="#home"
+              class="shrink-0 rounded-2xl bg-white p-2"
+              aria-label="Green Luang Prabang home"
+            >
+              <img
+                src="Images/Green LPB _ without background (1).png"
+                alt="Green Luang Prabang logo"
+                class="h-24 w-24 object-contain"
+              />
+            </a>
+            <div class="space-y-2 text-sm text-gray-300">
+              <h2
+                class="inline-flex items-center gap-2 text-xl font-bold tracking-wide text-white"
+              >
+                <i
+                  class="fa-solid fa-leaf text-emerald-300"
+                  aria-hidden="true"
+                ></i>
+                Green Luang Prabang
+              </h2>
+              <p
+                class="max-w-md leading-relaxed text-gray-400"
+                data-i18n="footer_intro"
+              ></p>
+              <p class="inline-flex items-center gap-2 text-gray-300">
+                <i
+                  class="fa-solid fa-location-dot text-emerald-300"
+                  aria-hidden="true"
+                ></i>
+                <span data-i18n="footer_location"></span>
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col space-y-3 text-sm text-gray-300 md:col-span-5 md:pl-6"
+          >
+            <h3
+              class="text-base font-bold uppercase tracking-[0.12em] text-emerald-200"
+              data-i18n="footer_contact"
+            ></h3>
+            <div class="flex items-baseline gap-2">
+              <i
+                class="fa-solid fa-phone w-4 text-emerald-300"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-medium text-gray-200"
+                data-i18n="footer_phone_label"
+              ></span>
+              <a
+                href="tel:+8562023246519"
+                class="transition-colors duration-200 hover:text-emerald-300"
+                >020 23 246 519</a
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <i
+                class="fa-solid fa-envelope w-4 text-emerald-300"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-medium text-gray-200"
+                data-i18n="footer_email_label"
+              ></span>
+              <a
+                href="mailto:greenluangprabang@gmail.com"
+                class="break-all transition-colors duration-200 hover:text-emerald-300"
+                >greenluangprabang@gmail.com</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 border-t border-gray-800/80"></div>
+
+        <div
+          class="flex flex-col gap-6 pt-2 md:flex-row md:items-center md:justify-between"
+        >
+          <nav
+            aria-label="Footer navigation"
+            class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs font-semibold text-gray-300 md:justify-start"
+          >
+            <a
+              href="#home"
+              class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform after:duration-200 hover:text-emerald-300 hover:after:scale-x-100 focus-visible:text-emerald-300 focus-visible:after:scale-x-100"
+              data-i18n="nav_home"
+            ></a>
+            <a
+              href="#about"
+              class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform after:duration-200 hover:text-emerald-300 hover:after:scale-x-100 focus-visible:text-emerald-300 focus-visible:after:scale-x-100"
+              data-i18n="nav_about"
+            ></a>
+            <a
+              href="#projects"
+              class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform after:duration-200 hover:text-emerald-300 hover:after:scale-x-100 focus-visible:text-emerald-300 focus-visible:after:scale-x-100"
+              data-i18n="nav_projects"
+            ></a>
+            <a
+              href="#gallery"
+              class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform after:duration-200 hover:text-emerald-300 hover:after:scale-x-100 focus-visible:text-emerald-300 focus-visible:after:scale-x-100"
+              data-i18n="nav_gallery"
+            ></a>
+            <a
+              href="#donate"
+              class="relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-emerald-300 after:transition-transform after:duration-200 hover:text-emerald-300 hover:after:scale-x-100 focus-visible:text-emerald-300 focus-visible:after:scale-x-100"
+              data-i18n="nav_donate"
+            ></a>
+          </nav>
+
+          <div class="flex items-center justify-center gap-3 text-white">
+            <a
+              href="https://www.facebook.com/share/1FWvvD2T1J/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            >
+              <i class="fa-brands fa-facebook-f text-sm" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.tiktok.com/@greenluangprabang?is_from_webapp=1&sender_device=pc"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            >
+              <i class="fa-brands fa-tiktok text-sm" aria-hidden="true"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/greenluangprabang?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep"
+            >
+              <i class="fa-brands fa-instagram text-sm" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="mt-7 flex flex-col gap-3 border-t border-white/10 pt-5 text-center text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between sm:text-left"
+        >
+          <p class="inline-flex items-center gap-2">
+            <i
+              class="fa-solid fa-leaf shrink-0 text-emerald-300"
+              aria-hidden="true"
+            ></i>
+            <span data-i18n="foot"></span>
+          </p>
+          <p
+            class="inline-flex items-center justify-center gap-2 sm:justify-start"
+          >
+            <i class="fa-regular fa-copyright text-xs" aria-hidden="true"></i>
+            <span data-i18n="footer_copyright"></span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <dialog
+      id="dlg"
+      class="fixed inset-0 m-auto max-h-[90vh] w-fit max-w-[min(94vw,80rem)] overflow-hidden rounded-2xl bg-paper p-0 text-deep shadow-2xl"
+    >
+      <div class="relative p-2 sm:p-3">
+        <button
+          id="dx"
+          type="button"
+          class="absolute right-4 top-4 z-20 grid h-11 w-11 place-items-center rounded-full text-4xl font-bold text-emerald-900 transition duration-500"
+          aria-label="Close image viewer"
+        >
+          <i class="ri-close-circle-line"></i>
+        </button>
+        <div id="dc"></div>
+      </div>
+    </dialog>
+  </body>
+  <script src="translate.js"></script>
+  <script src="gallery.js"></script>
+  <script>
+    const aboutImages = [
+      "Images_about_waste/798826055_1790339829083434_6621362589083271894_n.png",
+      "Images_about_waste/807844603_1125502333376739_3445940055609772544_n.png",
+      "Images_about_waste/817531727_1562734635043457_3580217784977164912_n.png",
+      "Images_about_waste/832819428_1654885873006871_7689622961727614658_n.jpg",
+      "Images_about_waste/840765525_1119456370732053_6804029758921597333_n.png",
+      "Images_about_waste/854944080_1488870426418765_8871877238937711309_n.png",
+    ];
+    const aboutImage = document.getElementById("about-image");
+    const aboutImageStatus = document.getElementById("about-image-status");
+    let aboutImageIndex = 0;
+
+    function showAboutImage(offset) {
+      aboutImageIndex =
+        (aboutImageIndex + offset + aboutImages.length) % aboutImages.length;
+      aboutImage.src = aboutImages[aboutImageIndex];
+      aboutImage.classList.remove("about-image-transition");
+      void aboutImage.offsetWidth;
+      aboutImage.classList.add("about-image-transition");
+      aboutImageStatus.textContent = `Image ${aboutImageIndex + 1} of ${aboutImages.length}`;
+    }
+
+    document
+      .getElementById("about-image-prev")
+      .addEventListener("click", () => showAboutImage(-1));
+    document
+      .getElementById("about-image-next")
+      .addEventListener("click", () => showAboutImage(1));
+  </script>
+</html>

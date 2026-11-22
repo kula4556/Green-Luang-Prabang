@@ -1,0 +1,138 @@
+[
+  {
+    "id": "cleanup-volunteers",
+    "category": "cleanup",
+    "image": "Images_cleanup/832819428_1654885873006871_7689622961727614658_n.jpg",
+    "title": {
+      "lo": "ອາສາສະໝັກເກັບຂີ້ເຫຍື້ອ",
+      "en": "Community clean-up volunteers"
+    },
+    "description": {
+      "lo": "ອາສາສະໝັກຖ່າຍຮູບຮ່ວມກັນຫຼັງກິດຈະກຳເກັບຂີ້ເຫຍື້ອ.",
+      "en": "Volunteers gather with collected rubbish after a clean-up activity."
+    },
+    "alt": {
+      "lo": "ອາສາສະໝັກຢືນຖືປ້າຍແລະຖົງຂີ້ເຫຍື້ອຫຼັງເກັບກວາດ.",
+      "en": "Volunteers pose with project banners and bags collected during a clean-up."
+    }
+  },
+  {
+    "id": "cleaning-community-walkway",
+    "category": "cleanup",
+    "image": "Images_cleanup/798709576_1714102363038880_5481323223471763241_n.png",
+    "title": {
+      "lo": "ຮ່ວມກັນເກັບຂີ້ເຫຍື້ອ",
+      "en": "Cleaning a community walkway"
+    },
+    "description": {
+      "lo": "ອາສາສະໝັກຊ່ວຍກັນເກັບຂີ້ເຫຍື້ອຕາມທາງຍ່າງສາທາລະນະ.",
+      "en": "Volunteers collect litter along a public walkway."
+    },
+    "alt": {
+      "lo": "ອາສາສະໝັກໃຊ້ຄີມເກັບຂີ້ເຫຍື້ອຕາມທາງຍ່າງ.",
+      "en": "Volunteers use litter pickers to collect rubbish along a walkway."
+    }
+  },
+  {
+    "id": "clean-up-team",
+    "category": "cleanup",
+    "image": "Images_cleanup/WhatsApp Image 2026-10-21 at 19.15.38.jpeg",
+    "title": {
+      "lo": "ທີມງານຮ່ວມໃຈຮັກສາຄວາມສະອາດ",
+      "en": "A team effort for a cleaner community"
+    },
+    "description": {
+      "lo": "ກຸ່ມອາສາສະໝັກຖ່າຍຮູບຮ່ວມກັບປ້າຍໂຄງການແລະຖົງຂີ້ເຫຍື້ອ.",
+      "en": "A volunteer group poses with project banners and bags from a clean-up."
+    },
+    "alt": {
+      "lo": "ກຸ່ມອາສາສະໝັກຢືນຖືປ້າຍ Green Luang Prabang ແລະຖົງຂີ້ເຫຍື້ອ.",
+      "en": "Volunteers pose with Green Luang Prabang banners and collected rubbish."
+    }
+  },
+  {
+    "id": "cleanup-group-photo",
+    "category": "cleanup",
+    "image": "Images_booth/802988655_1632445995250859_3307640659352464774_n.jpg",
+    "title": {
+      "lo": "ຮ່ວມແຮງເພື່ອຊຸມຊົນສະອາດ",
+      "en": "Working together for a cleaner community"
+    },
+    "description": {
+      "lo": "ອາສາສະໝັກຖ່າຍຮູບກັບປ້າຍໂຄງການແລະຖົງທີ່ເກັບຮວບຮວມ.",
+      "en": "Volunteers pose with project banners and bags gathered during a clean-up."
+    },
+    "alt": {
+      "lo": "ກຸ່ມຄົນຢືນຖືປ້າຍ Green Luang Prabang ຢູ່ຫຼັງຖົງຂີ້ເຫຍື້ອ.",
+      "en": "A group stands with Green Luang Prabang banners behind gathered rubbish bags."
+    }
+  },
+  {
+    "id": "recycling-outreach-booth",
+    "category": "booth",
+    "image": "Images_booth/798182137_1632308501931275_1479341947757508990_n.jpg",
+    "title": {
+      "lo": "ບູດສື່ສານການຣີໄຊເຄີນ",
+      "en": "Recycling outreach booth"
+    },
+    "description": {
+      "lo": "ພາບຈາກບູດ Green Luang Prabang ທີ່ມີຖັງແຍກຂີ້ເຫຍື້ອ.",
+      "en": "A Green Luang Prabang booth displays bins for sorting waste."
+    },
+    "alt": {
+      "lo": "ອາສາສະໝັກຢູ່ບູດຣີໄຊເຄີນທີ່ມີຖັງແຍກຂີ້ເຫຍື້ອ.",
+      "en": "Volunteers at a recycling booth with waste-sorting bins."
+    }
+  },
+  {
+    "id": "bottle-cap-booth",
+    "category": "booth",
+    "image": "Images_booth/802173305_1632444861917639_5429761340910704882_n.jpg",
+    "title": {
+      "lo": "ບູດຮັບຝາຂວດ",
+      "en": "Bottle-cap collection booth"
+    },
+    "description": {
+      "lo": "ປ້າຍບູດທີ່ຈັດເຮັດຈາກຝາຂວດພາຍໃນກິດຈະກຳ.",
+      "en": "A booth sign made with bottle caps is displayed at the activity."
+    },
+    "alt": {
+      "lo": "ປ້າຍ GREEN LPB ທີ່ຈັດວາງດ້ວຍຝາຂວດຢູ່ໜ້າເຕັ້ນບູດ.",
+      "en": "A GREEN LPB sign made from bottle caps hangs at a booth."
+    }
+  },
+  {
+    "id": "community-recycling-booth",
+    "category": "booth",
+    "image": "Images_booth/801938844_1972121116814873_2432539839671547412_n.png",
+    "title": {
+      "lo": "ສື່ສານການຣີໄຊເຄີນຜ່ານບູດ",
+      "en": "Sharing recycling at the booth"
+    },
+    "description": {
+      "lo": "ພາບການສາທິດວັດສະດຸຣີໄຊເຄີນຢູ່ບູດຊຸມຊົນ.",
+      "en": "Recycling materials are shown to visitors at a community booth."
+    },
+    "alt": {
+      "lo": "ຜູ້ຈັດງານສະແດງວັດສະດຸຣີໄຊເຄີນຢູ່ບູດ.",
+      "en": "A booth organizer presents recycled materials to visitors."
+    }
+  },
+  {
+    "id": "green-community-booth",
+    "category": "booth",
+    "image": "Images_booth/WhatsApp Image 2026-10-29 at 12.49.04.jpeg",
+    "title": {
+      "lo": "ກິດຈະກຳບູດຂອງຊຸມຊົນ",
+      "en": "Green community booth"
+    },
+    "description": {
+      "lo": "ອາສາສະໝັກຖ່າຍຮູບຢູ່ບູດພ້ອມຖົງເກັບຂີ້ເຫຍື້ອ.",
+      "en": "Volunteers pose at a community booth with collected rubbish bags."
+    },
+    "alt": {
+      "lo": "ກຸ່ມອາສາສະໝັກຢູ່ບູດ Green LPB ກັບຖົງຂີ້ເຫຍື້ອ.",
+      "en": "Volunteers at a Green LPB booth with bags of collected rubbish."
+    }
+  }
+]

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="lo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waste Management in Luang Prabang - Green Luang Prabang</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link href="https://fonts.cdnfonts.com/css/phetsarath" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: "#0d4a34",
+              deep: "#0a3b2a",
+              leaf: "#3f8f5a",
+              mist: "#bfe3e8",
+              paper: "#fbfaf6",
+              sand: "#efece0",
+              earth: "#8a5a2b",
+            },
+            fontFamily: {
+              sans: ["Phetsarath", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      #hd {
+        background-color: rgba(251, 250, 246, 0.9);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+      }
+
+      #lang-switch::before {
+        position: absolute;
+        top: 0.25rem;
+        bottom: 0.25rem;
+        left: 0.25rem;
+        width: calc((100% - 0.5rem) / 2);
+        border-radius: 9999px;
+        background-color: #064e3b;
+        content: "";
+        pointer-events: none;
+        transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      #lang-switch:has([data-lang="en"].act)::before {
+        transform: translateX(100%);
+      }
+
+      #lang-switch [data-lang] {
+        position: relative;
+        z-index: 1;
+        transition: color 300ms ease;
+      }
+
+      #lang-switch [data-lang].act {
+        background-color: transparent;
+        color: #fff;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #lang-switch::before,
+        #lang-switch [data-lang] {
+          transition: none;
+        }
+      }
+
+      .waste-guide-card {
+        --bin-accent: #2563eb;
+        --bin-tint: #eff6ff;
+        border-color: color-mix(in srgb, var(--bin-accent) 18%, white);
+      }
+
+      .waste-guide-art {
+        background:
+          radial-gradient(
+            circle at 50% 42%,
+            color-mix(in srgb, var(--bin-accent) 18%, white),
+            transparent 68%
+          ),
+          linear-gradient(145deg, var(--bin-tint), #fff 78%);
+      }
+
+      .waste-guide-bin {
+        filter: drop-shadow(0 22px 18px rgb(10 59 42 / 16%));
+      }
+
+      .waste-guide-content.is-changing {
+        animation: waste-guide-enter 360ms ease both;
+      }
+
+      @keyframes waste-guide-enter {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .waste-guide-content.is-changing {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-paper font-sans text-deep antialiased">
+    <!-- HEADER -->
+    <header
+      id="hd"
+      class="fixed inset-x-0 top-0 z-40 text-forest shadow-xs transition-colors duration-300"
+    >
+      <div
+        class="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-8"
+      >
+        <a
+          href="Green Luang Prabang.html#home"
+          class="flex items-center gap-3"
+          aria-label="Green Luang Prabang home"
+        >
+          <span
+            class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-current/40 bg-white/10 p-0.5"
+          >
+            <img
+              src="Images/Green LPB _ without background (1).png"
+              alt="Green Luang Prabang"
+              class="h-full w-full object-contain"
+            />
+          </span>
+          <span class="leading-tight">
+            <b class="block text-lg font-semibold sm:text-xl"
+              >Green Luang Prabang</b
+            >
+            <small class="text-xs tracking-widest opacity-70"
+              >LAOS · ລາວ</small
+            >
+          </span>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <div
+            id="lang-switch"
+            class="relative grid grid-cols-2 rounded-full border border-current/30 p-1 text-sm font-semibold"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              type="button"
+              data-lang="lo"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+              aria-pressed="true"
+            >
+              ລາວ
+            </button>
+            <button
+              type="button"
+              data-lang="en"
+              class="rounded-full px-4 py-1.5 transition-colors duration-300"
+              aria-pressed="false"
+            >
+              EN
+            </button>
+          </div>
+          <a
+            href="Green Luang Prabang.html#projects"
+            class="group inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-xs font-semibold text-white transition hover:bg-leaf sm:px-5 sm:text-sm"
+          >
+            <span data-i18n="back_projects">ກັບສູ່ໂຄງການ</span>
+            <i
+              class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0"
+              aria-hidden="true"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-28 pb-20">
+      <!-- HERO / OVERVIEW SECTION -->
+      <section class="mx-auto max-w-7xl px-4 sm:px-12 py-12">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <span
+              class="inline-block rounded-full bg-sand px-4 py-1.5 text-xs font-semibold text-earth"
+              data-i18n="badge_unesco"
+            >
+            </span>
+            <h1
+              class="text-3xl sm:text-5xl font-bold leading-snug text-deep"
+              data-i18n="hero_title"
+            ></h1>
+            <p
+              class="text-lg text-deep/80 leading-relaxed"
+              data-i18n="hero_desc"
+            ></p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#challenges"
+                class="group inline-flex items-center gap-2 rounded-full bg-forest px-8 py-3.5 font-semibold text-white shadow-md transition hover:bg-leaf"
+              >
+                <span data-i18n="btn_explore"></span>
+                <i
+                  class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0"
+                  aria-hidden="true"
+                ></i>
+              </a>
+              <a
+                href="#solutions"
+                class="group inline-flex items-center gap-2 rounded-full border border-forest/40 px-8 py-3.5 font-semibold text-forest transition hover:bg-forest/10"
+              >
+                <span data-i18n="btn_solutions">ແນວທາງແກ້ໄຂ</span>
+                <i
+                  class="ri-lightbulb-line inline-block transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 group-focus-visible:rotate-12 group-focus-visible:scale-110 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none"
+                  aria-hidden="true"
+                ></i>
+              </a>
+            </div>
+          </div>
+          <!-- Image Card -->
+          <div class="relative">
+            <div
+              class="aspect-4/3 rounded-[2.5rem] overflow-hidden shadow-2xl border border-deep/10"
+            >
+              <img
+                src="Images/WhatsApp Image 2026-10-25 at 19.56.51.jpeg"
+                alt="Waste management in Luang Prabang"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="absolute bottom-3 right-3 flex max-w-[75%] items-center gap-2 rounded-2xl border border-white/50 bg-white/50 p-3 text-xs font-bold text-deep shadow-xl backdrop-blur-md sm:bottom-4 sm:right-4 sm:max-w-xs sm:p-4 sm:text-sm"
+            >
+              <i
+                class="ri-delete-bin-line shrink-0 self-center text-2xl text-forest"
+                aria-hidden="true"
+              ></i>
+              <p
+                class="my-0 self-center leading-relaxed"
+                data-i18n="img_caption"
+              ></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Statistics Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div
+              class="text-3xl font-bold text-forest mb-2"
+              data-i18n="stat1_value"
+            >
+              ~25,000 ໂຕນ
+            </div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-deep">
+              <i
+                class="ri-delete-bin-line shrink-0 text-lg text-forest"
+                aria-hidden="true"
+              ></i>
+              <span data-i18n="stat1_title"></span>
+            </div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat1_desc"></p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div
+              class="text-3xl font-bold text-forest mb-2"
+              data-i18n="stat2_value"
+            ></div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-deep">
+              <i
+                class="ri-home-4-line shrink-0 text-lg text-forest"
+                aria-hidden="true"
+              ></i>
+              <span data-i18n="stat2_title"></span>
+            </div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat2_desc"></p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div
+              class="text-3xl font-bold text-forest mb-2"
+              data-i18n="stat3_value"
+            ></div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-deep">
+              <i
+                class="ri-recycle-line shrink-0 text-lg text-forest"
+                aria-hidden="true"
+              ></i>
+              <span data-i18n="stat3_title"></span>
+            </div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat3_desc"></p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div
+              class="text-3xl font-bold text-forest mb-2"
+              data-i18n="stat4_value"
+            ></div>
+            <div class="flex items-center gap-2 text-sm font-semibold text-deep">
+              <i
+                class="ri-map-pin-line shrink-0 text-lg text-forest"
+                aria-hidden="true"
+              ></i>
+              <span data-i18n="stat4_title"></span>
+            </div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat4_desc"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: KEY CHALLENGES WITH IMAGES -->
+      <section
+        id="challenges"
+        class="mx-auto max-w-7xl px-4 sm:px-12 py-20 bg-sand/60 rounded-[3rem] my-12"
+      >
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <span
+            class="text-xs uppercase tracking-widest text-earth font-bold"
+            data-i18n="challenges_eyebrow"
+          ></span>
+          <h2
+            class="text-3xl sm:text-4xl font-bold text-deep"
+            data-i18n="challenges_title"
+          ></h2>
+          <p class="text-deep/70 text-base" data-i18n="challenges_sub"></p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-14">
+          <!-- Card 1 -->
+          <div
+            class="rounded-4xl bg-white overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="h-96 bg-cover bg-center relative"
+                style="
+                  background-image: url(Images/86$\ 7\ personer\ Penalose\ \ vand\ sted.jpg);
+                "
+              >
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/10"
+                ></div>
+                <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                    style="
+                      -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                      mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                    "
+                  ></div>
+                  <div class="relative z-10 space-y-3">
+                    <h3
+                      class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c1_title"
+                    ></h3>
+                    <p
+                      class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c1_desc"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="rounded-4xl overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="h-96 bg-cover bg-top relative"
+                style="
+                  background-image: url(Images/download\ \(2\).jpg);
+                "
+              >
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/30"
+                ></div>
+                <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                    style="
+                      -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                      mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                    "
+                  ></div>
+                  <div class="relative z-10 space-y-3">
+                    <h3
+                      class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c2_title"
+                    ></h3>
+                    <p
+                      class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c2_desc"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="rounded-4xl overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="h-96 bg-cover bg-top relative"
+                style="background-image: url(Images/IMG_6069.JPG)"
+              >
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-0 bg-black/10"
+                ></div>
+                <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                    style="
+                      -webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                      mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);
+                    "
+                  ></div>
+                  <div class="relative z-10 space-y-3">
+                    <h3
+                      class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c3_title"
+                    ></h3>
+                    <p
+                      class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                      data-i18n="c3_desc"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: INTERACTIVE WASTE SORTING GUIDE -->
+      <section id="solutions" class="mx-auto max-w-7xl px-4 py-16 sm:px-12">
+        <div class="mx-auto mb-10 max-w-3xl space-y-4 text-center">
+          <span
+            class="text-xs font-bold uppercase tracking-[0.22em] text-earth"
+            data-i18n="guide_eyebrow"
+          ></span>
+          <h2
+            class="text-3xl font-bold text-deep sm:text-4xl"
+            data-i18n="guide_title"
+          ></h2>
+          <p class="text-base leading-relaxed text-deep/70" data-i18n="guide_sub"></p>
+        </div>
+
+        <div
+          id="waste-guide-card"
+          class="waste-guide-card overflow-hidden rounded-4xl border bg-white shadow-xl shadow-deep/10 transition-colors duration-500 sm:rounded-[2.5rem]"
+        >
+          <div class="grid lg:grid-cols-[0.82fr_1.18fr]">
+            <div
+              class="waste-guide-art relative flex min-h-72 items-center justify-center overflow-hidden p-8 transition-colors duration-500 sm:min-h-96 lg:min-h-140"
+            >
+              <span
+                class="absolute left-6 top-6 rounded-full bg-white/80 px-4 py-2 text-xs font-bold tracking-widest text-deep shadow-sm backdrop-blur"
+                id="guide-step"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="absolute bottom-8 h-8 w-2/3 rounded-[50%] bg-deep/10 blur-xl"
+              ></span>
+              <span
+                class="absolute bottom-4 left-4 right-4 z-20 rounded-xl bg-white/90 px-3 py-2 text-center text-xs font-semibold leading-relaxed text-deep shadow-sm backdrop-blur sm:left-6 sm:right-6"
+                data-i18n="guide_image_note"
+              ></span>
+              <img
+                id="guide-bin-image"
+                class="waste-guide-bin relative z-10 max-h-80 w-auto max-w-[74%] object-contain transition-transform duration-500 sm:max-h-102.5 lg:max-h-107.5"
+                src=""
+                alt=""
+              />
+            </div>
+
+            <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-14">
+              <div id="waste-guide-content" class="waste-guide-content">
+                <span
+                  id="guide-category"
+                  class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wider"
+                ></span>
+                <h3
+                  id="guide-title"
+                  class="mt-4 text-3xl font-bold leading-tight text-deep sm:text-4xl"
+                  aria-live="polite"
+                ></h3>
+                <p
+                  id="guide-purpose"
+                  class="mt-4 text-base leading-relaxed text-deep/75"
+                ></p>
+                <div class="mt-7">
+                  <h4
+                    class="text-sm font-bold uppercase tracking-wider text-deep"
+                    data-i18n="guide_examples"
+                  ></h4>
+                  <ul
+                    id="guide-examples"
+                    class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2"
+                  ></ul>
+                </div>
+
+                <div
+                  class="mt-6 rounded-2xl border-l-4 bg-paper p-4 sm:p-5"
+                  id="guide-tip-box"
+                >
+                  <h4
+                    id="guide-tip-title"
+                    class="flex items-center gap-2 text-sm font-bold text-deep"
+                  >
+                    <i class="ri-lightbulb-line text-lg" aria-hidden="true"></i>
+                    <span></span>
+                  </h4>
+                  <p
+                    id="guide-tip"
+                    class="mt-2 text-sm leading-relaxed text-deep/75"
+                  ></p>
+                </div>
+              </div>
+
+              <div class="mt-8 border-t border-deep/10 pt-6">
+                <div
+                  id="guide-progress"
+                  class="mb-5 flex items-center justify-center gap-2"
+                  role="img"
+                ></div>
+                <div class="flex items-center justify-between gap-4">
+                  <button
+                    id="guide-previous"
+                    type="button"
+                    class="group inline-flex min-h-12 items-center gap-2 rounded-full border border-deep/20 px-5 py-3 font-semibold text-deep transition hover:border-deep hover:bg-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  >
+                    <i
+                      class="ri-arrow-left-line inline-block transition-transform duration-300 group-hover:-translate-x-1 group-focus-visible:-translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0"
+                      aria-hidden="true"
+                    ></i>
+                    <span data-i18n="guide_previous"></span>
+                  </button>
+                  <span
+                    id="guide-count"
+                    class="text-xs font-semibold tracking-wider text-deep/55"
+                    aria-hidden="true"
+                  ></span>
+                  <button
+                    id="guide-next"
+                    type="button"
+                    class="group inline-flex min-h-12 items-center gap-2 rounded-full px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+                  >
+                    <span data-i18n="guide_next"></span>
+                    <i
+                      class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-deep py-14 text-white">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-12 md:grid-cols-2">
+        <div>
+          <b class="text-xl">Green Luang Prabang</b>
+          <p class="mt-3 max-w-md text-white/75" data-i18n="footer_desc">
+            ຫຼວງພະບາງທີ່ສະອາດ ຂຽວ ແລະ ຍືນຍົງກວ່າ
+            ບ່ອນທີ່ຊຸມຊົນຮ່ວມກັນປົກປ້ອງທຳມະຊາດ ແລະ ສ້າງໂອກາດໃຫ້ຄົນລຸ້ນຕໍ່ໄປ.
+          </p>
+        </div>
+        <div class="flex flex-col md:items-end justify-center">
+          <p class="text-sm text-white/75" data-i18n="footer_copy">
+            © 2026 Green Luang Prabang. Community Environmental Initiative.
+          </p>
+          <a
+            href="Green Luang Prabang.html"
+            class="mt-3 text-mist underline text-sm font-semibold"
+            data-i18n="back_main_site"
+            >ກັບສູ່ເວັບໄຊຫຼັກ ↗</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="translateWaste.js"></script>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Pollution & Protection in Luang Prabang - Green Luang Prabang</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link href="https://fonts.cdnfonts.com/css/phetsarath" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: "#0d4a34",
+              deep: "#0a3b2a",
+              leaf: "#3f8f5a",
+              mist: "#bfe3e8",
+              paper: "#fbfaf6",
+              sand: "#efece0",
+              earth: "#8a5a2b",
+            },
+            fontFamily: {
+              sans: ["Phetsarath", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes solution-content-enter {
+        from {
+          opacity: 0;
+          transform: translateX(0.75rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes solution-image-enter {
+        from {
+          opacity: 0.6;
+          transform: scale(1.04);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .solution-content-enter {
+        animation: solution-content-enter 350ms ease-out both;
+      }
+
+      .solution-image-enter {
+        animation: solution-image-enter 450ms ease-out both;
+      }
+
+      #solution-image-frame.solution-image-centered-frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #solution-image.solution-image-centered {
+        position: relative;
+        inset: auto;
+        display: block;
+        margin: auto;
+        width: 96%;
+        height: 96%;
+        object-fit: contain;
+      }
+
+      #solution-image-frame.solution-bin-background {
+        background:
+          radial-gradient(
+            circle at 18% 42%,
+            color-mix(in srgb, #2563eb 14%, white),
+            transparent 58%
+          ),
+          radial-gradient(
+            circle at 40% 42%,
+            color-mix(in srgb, #16a34a 14%, white),
+            transparent 58%
+          ),
+          radial-gradient(
+            circle at 64% 42%,
+            color-mix(in srgb, #dc2626 14%, white),
+            transparent 58%
+          ),
+          radial-gradient(
+            circle at 84% 42%,
+            color-mix(in srgb, #eab308 16%, white),
+            transparent 58%
+          ),
+          linear-gradient(145deg, #eff6ff, #fff 78%);
+      }
+
+      #solution-image-frame.solution-grease-background {
+        background:
+          radial-gradient(
+            circle at 50% 45%,
+            color-mix(in srgb, #dc2626 14%, white),
+            transparent 62%
+          ),
+          linear-gradient(145deg, #fef2f2, #fff 78%);
+      }
+
+      #solution-image-frame.solution-eco-background {
+        background:
+          radial-gradient(
+            circle at 22% 32%,
+            color-mix(in srgb, #16a34a 16%, white),
+            transparent 52%
+          ),
+          radial-gradient(
+            circle at 77% 30%,
+            color-mix(in srgb, #22c55e 18%, white),
+            transparent 56%
+          ),
+          radial-gradient(
+            circle at 50% 75%,
+            color-mix(in srgb, #84cc16 12%, white),
+            transparent 58%
+          ),
+          linear-gradient(145deg, #f0fdf4, #fff 78%);
+      }
+
+      #solution-image-frame.solution-plastic-background {
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            color-mix(in srgb, #10b981 20%, white),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 35%,
+            color-mix(in srgb, #34d399 18%, white),
+            transparent 56%
+          ),
+          radial-gradient(
+            circle at 52% 75%,
+            color-mix(in srgb, #a3e635 12%, white),
+            transparent 56%
+          ),
+          linear-gradient(145deg, #ecfdf5, #fff 80%);
+      }
+
+      #lang-switch::before {
+        position: absolute;
+        top: 0.25rem;
+        bottom: 0.25rem;
+        left: 0.25rem;
+        width: calc((100% - 0.5rem) / 2);
+        border-radius: 9999px;
+        background-color: #064e3b;
+        content: "";
+        pointer-events: none;
+        transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      #lang-switch:has([data-lang="en"].act)::before {
+        transform: translateX(100%);
+      }
+
+      #lang-switch [data-lang] {
+        position: relative;
+        z-index: 1;
+        transition: color 300ms ease;
+      }
+
+      #lang-switch [data-lang].act {
+        background-color: transparent;
+        color: #fff;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #lang-switch::before,
+        #lang-switch [data-lang] {
+          transition: none;
+        }
+
+        .solution-content-enter,
+        .solution-image-enter {
+          animation: none;
+        }
+      }
+    </style>
+</head>
+<body class="bg-paper font-sans text-deep antialiased">
+    <!-- HEADER -->
+    <header id="hd" class="fixed inset-x-0 top-0 z-40 bg-paper/93 backdrop-blur-md text-forest shadow-xs transition-colors duration-300">
+      <div class="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-8">
+        <a href="Green Luang Prabang.html#home" class="flex items-center gap-3" aria-label="Green Luang Prabang home">
+          <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-current/40 bg-white/10 p-0.5">
+            <img src="Images/Green LPB _ without background (1).png" alt="Green Luang Prabang" class="h-full w-full object-contain" />
+          </span>
+          <span class="leading-tight">
+            <b class="block text-lg font-semibold sm:text-xl">Green Luang Prabang</b>
+            <small class="text-xs tracking-widest opacity-70">LAOS · ລາວ</small>
+          </span>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-4">
+          <div id="lang-switch" class="relative grid grid-cols-2 rounded-full border border-current/30 p-1 text-sm font-semibold" role="group" aria-label="Language">
+            <button type="button" data-lang="lo" class="rounded-full px-4 py-1.5 transition-colors duration-300" aria-pressed="true">ລາວ</button>
+            <button type="button" data-lang="en" class="rounded-full px-4 py-1.5 transition-colors duration-300" aria-pressed="false">EN</button>
+          </div>
+          <a href="Green Luang Prabang.html#projects" class="group inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-xs font-semibold text-white transition hover:bg-leaf sm:px-5 sm:text-sm">
+            <span data-i18n="back_projects">ກັບສູ່ໂຄງການ</span>
+            <i class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-28 pb-20">
+      <!-- HERO / OVERVIEW SECTION -->
+      <section class="mx-auto max-w-7xl px-4 sm:px-12 py-12">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <span class="inline-block rounded-full bg-sand px-4 py-1.5 text-xs font-semibold text-earth" data-i18n="badge_water">
+              ລະບົບນິເວດສາຍນຳ້ · ຫຼວງພະບາງ
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-bold leading-snug text-deep" data-i18n="hero_title">
+              ມົນລະພິດທາງນ້ຳ ແລະ ຜົນກະທົບຕໍ່ແມ່ສາຍນ້ຳຂອງ-ນ້ຳຄານ
+            </h1>
+            <p class="text-lg text-deep/80 leading-relaxed" data-i18n="hero_desc">
+              ຫຼວງພະບາງຕັ້ງຢູ່ຈຸດບັນຈົບກັນຂອງ <strong>ແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ</strong> ເຊິ່ງເປັນຫົວໃຈຂອງວັດທະນະທຳ ແລະ ຊີວິດການເປັນຢູ່. ແຕ່ໃນປັດຈຸບັນ, ນ້ຳເສຍຈາກຄົວເຮືອນ, ທຸລະກິດການທ່ອງທ່ຽວ ແລະ ສິ່ງເສດເຫຼືອທີ່ບໍ່ໄດ້ຮັບການບຳບັດ ກຳລັງຄຸກຄາມຄຸນນະພາບນ້ຳຢ່າງຮ້າຍແຮງ.
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="#challenges" class="group inline-flex items-center gap-2 rounded-full bg-forest px-8 py-3.5 font-semibold text-white shadow-md transition hover:bg-leaf">
+                <span data-i18n="btn_explore">ສຳຫຼວດສາເຫດ ແລະ ບັນຫາ</span>
+                <i class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0" aria-hidden="true"></i>
+              </a>
+              <a href="#solutions" class="group inline-flex items-center gap-2 rounded-full border border-forest/40 px-8 py-3.5 font-semibold text-forest transition hover:bg-forest/10">
+                <span data-i18n="btn_solutions">ແນວທາງປົກປ້ອງແຫຼ່ງນ້ຳ</span>
+                <i class="ri-lightbulb-line inline-block transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 group-focus-visible:rotate-12 group-focus-visible:scale-110 motion-reduce:transition-none motion-reduce:group-hover:transform-none motion-reduce:group-focus-visible:transform-none" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Image Card -->
+          <div class="relative">
+            <div class="aspect-4/3 rounded-[2.5rem] overflow-hidden shadow-2xl border border-deep/10">
+              <img src="Images/WhatsApp Image 2026-10-25 at 20.59.51.jpeg" alt="Water Pollution in Luang Prabang Rivers" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-deep text-white p-6 rounded-3xl shadow-xl hidden sm:block max-w-xs border border-white/10">
+              <div class="flex items-center gap-3">
+                <i class="ri-drop-line text-3xl text-mist shrink-0"></i>
+                <p class="text-xs leading-relaxed text-white/90" data-i18n="img_caption">
+                  ຄວາມສະອາດຂອງສາຍນ້ຳສະທ້ອນເຖິງສຸຂະພາບຂອງຊຸມຊົນ ແລະ ສິ່ງແວດລ້ອມທ້ອງຖິ່ນ.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Statistics Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div class="text-3xl font-bold text-forest mb-2">2 ສາຍນ້ຳຫຼັກ</div>
+            <div class="text-sm font-semibold text-deep" data-i18n="stat1_title">ແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ</div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat1_desc">ສາຍນ້ຳສຳຄັນທີ່ຫຼໍ່ລ້ຽງເມືອງມໍລະດົກໂລກ</p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div class="text-3xl font-bold text-forest mb-2">ນ້ຳເສຍຈາກຊຸມຊົນ</div>
+            <div class="text-sm font-semibold text-deep" data-i18n="stat2_title">ການບຳບັດນ້ຳເສຍຍັງມີຈຳກັດ</div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat2_desc">ນ້ຳເສຍຈາກຄົວເຮືອນ ແລະ ຮ້ານຄ້າໄຫຼລົງສູ່ແມ່ນ້ຳໂດຍກົງ</p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div class="text-3xl font-bold text-forest mb-2">ໄມໂຄຣພລາສຕິກ</div>
+            <div class="text-sm font-semibold text-deep" data-i18n="stat3_title">ມົນລະພິດພາດສະຕິກທີ່ເບິ່ງບໍ່ເຫັນ</div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat3_desc">ເສດພາດສະຕິກຂະໜາດນ້ອຍສະສົມໃນຫ່ວງໂສ້ອາຫານຂອງສັດນ້ຳ</p>
+          </div>
+          <div class="rounded-3xl bg-white p-7 border border-deep/10 shadow-sm">
+            <div class="text-3xl font-bold text-forest mb-2">ຮ່ວມມື 100%</div>
+            <div class="text-sm font-semibold text-deep" data-i18n="stat4_title">ພະລັງຊຸມຊົນໃນການປົກປ້ອງສາຍນ້ຳ</div>
+            <p class="text-xs text-deep/70 mt-1" data-i18n="stat4_desc">ຄວາມຮັບຮູ້ ແລະ ການລົງມືເຮັດຂອງທຸກຄົນຄືຄຳຕອບ</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: KEY CHALLENGES WITH IMAGES -->
+      <section id="challenges" class="mx-auto max-w-7xl px-4 sm:px-12 py-20 bg-sand/60 rounded-[3rem] my-12">
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <span class="text-xs uppercase tracking-widest text-earth font-bold" data-i18n="challenges_eyebrow">ວິກິດການ ແລະ ໄພຄຸກຄາມທາງນ້ຳ</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-deep" data-i18n="challenges_title">ສາເຫດຫຼັກຂອງມົນລະພິດທາງນ້ຳໃນຫຼວງພະບາງ</h2>
+          <p class="text-deep/70 text-base" data-i18n="challenges_sub">ປັດໃຈທີ່ສົ່ງຜົນກະທົບຕໍ່ຄຸນນະພາບນ້ຳ, ຄວາມຫຼາກຫຼາຍທາງຊີວະນາໆພັນ ແລະ ສຸຂະພາບຂອງປະຊາຊົນລຽບຕາມແມ່ນ້ຳຂອງ-ຄານ</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-14">
+          <!-- Card 1 -->
+          <div class="rounded-4xl bg-white overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between">
+            <div
+              class="h-96 bg-cover bg-center relative"
+              style="background-image: url('Images_cleanup/WhatsApp Image 2026-10-21 at 19.15.38.jpeg');"
+            >
+              <div aria-hidden="true" class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                  style="-webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%); mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);"
+                ></div>
+                <div class="relative z-10 space-y-3">
+                  <h3
+                    class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c1_title"
+                  >
+                    ນ້ຳເສຍຈາກຄົວເຮືອນ ແລະ ທຸລະກິດ
+                  </h3>
+                  <p
+                    class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c1_desc"
+                  >
+                    ນ້ຳເສຍຈາກຄົວເຮືອນ, ຮ້ານອາຫານ ແລະ ໂຮງແຮມໃນເຂດເມືອງເກົ່າ ບາງສ່ວນຍັງຂາດລະບົບບຳບັດນ້ຳເສຍທີ່ມີປະສິດທິພາບ ກ່ອນປ່ອຍລົງສູ່ແມ່ນ້ຳຄານ ແລະ ແມ່ນ້ຳຂອງ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="rounded-4xl overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between">
+            <div
+              class="h-96 bg-cover bg-top relative"
+              style="background-image: url('Images/WhatsApp Image 2026-10-25 at 19.56.51.jpeg');"
+            >
+              <div aria-hidden="true" class="absolute inset-0 bg-black/30"></div>
+              <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                  style="-webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%); mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);"
+                ></div>
+                <div class="relative z-10 space-y-3">
+                  <h3
+                    class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c2_title"
+                  >
+                    ຂີ້ເຫຍື້ອພາດສະຕິກຖືກຊັດລົງແມ່ນ້ຳ
+                  </h3>
+                  <p
+                    class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c2_desc"
+                  >
+                    ຂວດພາດສະຕິກ, ຖົງພາດສະຕິກ ແລະ ໂຟມທີ່ຖືກຖິ້ມເກື່ອນຕາມແຄມຝັ່ງ ມັກຖືກກະແສນ້ຳພັດລົງສູ່ແມ່ນ້ຳໃນລະດູຝົນ ແລະ ເປັນອັນຕະລາຍຕໍ່ປາ ແລະ ສັດນ້ຳ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="rounded-4xl overflow-hidden border border-deep/10 shadow-sm flex flex-col justify-between">
+            <div
+              class="h-96 bg-cover bg-top relative"
+              style="background-image: url('Images/pexels-roman-odintsov-4553124.jpg');"
+            >
+              <div aria-hidden="true" class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute bottom-0 left-0 right-0 z-10 p-7">
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-x-0 -top-20 bottom-0 bg-linear-to-t from-black/85 via-black/40 to-transparent backdrop-blur-sm"
+                  style="-webkit-mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%); mask-image: linear-gradient(to top, black 0%, black 20%, transparent 100%);"
+                ></div>
+                <div class="relative z-10 space-y-3">
+                  <h3
+                    class="text-xl font-bold text-white [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c3_title"
+                  >
+                    ຜົນກະທົບຕໍ່ຄວາມຫຼາກຫຼາຍທາງຊີວະພາບ
+                  </h3>
+                  <p
+                    class="text-sm text-white leading-relaxed [text-shadow:0_2px_3px_rgba(0,0,0)]"
+                    data-i18n="c3_desc"
+                  >
+                    ມົນລະພິດທາງນ້ຳ ແລະ ສານເຄມີຕົກຄ້າງສົ່ງຜົນກະທົບຕໍ່ພັນປາທ້ອງຖິ່ນ, ແຫຼ່ງອາຫານຕາມທຳມະຊາດ ແລະ ວິຖີຊີວິດຂອງຊຸມຊົນປະມົງທີ່ພຶ່ງພາສາຍນ້ຳ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: COMMUNITY SOLUTIONS -->
+      <section id="solutions" class="mx-auto max-w-7xl px-4 py-16 sm:px-12">
+        <div class="mx-auto mb-10 max-w-3xl space-y-4 text-center">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-earth" data-i18n="sol_eyebrow">ການຮ່ວມມືຂອງຊຸມຊົນ</span>
+          <h2 class="text-3xl font-bold text-deep sm:text-4xl" data-i18n="sol_title">ແນວທາງປົກປ້ອງ ແລະ ຟື້ນຟູແຫຼ່ງນ້ຳໃນຫຼວງພະບາງ</h2>
+          <p class="text-base leading-relaxed text-deep/70" data-i18n="sol_sub">
+            Green Luang Prabang ມຸ່ງເນັ້ນການສ້າງຄວາມຮັບຮູ້ ແລະ ການລົງມືເຮັດຮ່ວມກັນ ເພື່ອຮັກສາຄວາມສະອາດຂອງແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ
+          </p>
+        </div>
+
+        <div class="overflow-hidden rounded-4xl border border-deep/10 bg-white shadow-xl shadow-deep/10 sm:rounded-[2.5rem]">
+          <div class="grid lg:grid-cols-[0.82fr_1.18fr]">
+            <div id="solution-image-frame" class="relative min-h-72 overflow-hidden bg-sand sm:min-h-96 lg:min-h-140">
+              <img id="solution-image" src="Images/Four Colorful Bins, Open and Overflowing.png" alt="Four waste sorting bins for recycling, organic waste, hazardous waste, and glass" class="absolute inset-0 h-full w-full object-contain" />
+              <span id="solution-step" class="absolute left-6 top-6 rounded-full bg-white/85 px-4 py-2 text-xs font-bold tracking-widest text-deep shadow-sm backdrop-blur">01 / 04</span>
+              <span data-i18n="solution_image_note" class="absolute bottom-4 left-4 right-4 z-20 rounded-xl bg-white/90 px-3 py-2 text-center text-xs font-semibold leading-relaxed text-deep shadow-sm backdrop-blur sm:left-6 sm:right-6"></span>
+            </div>
+
+            <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-14">
+              <div id="solution-content" class="solution-content">
+                <span class="inline-flex items-center gap-2 rounded-full bg-mist/50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-forest" data-i18n="sol_card_label">ການແກ້ໄຂໂດຍຊຸມຊົນ</span>
+                <h3 id="solution-title" class="mt-4 text-3xl font-bold leading-tight text-deep sm:text-4xl" aria-live="polite"></h3>
+                <p id="solution-description" class="mt-4 text-base leading-relaxed text-deep/75"></p>
+                <div class="mt-7">
+                  <h4 class="text-sm font-bold uppercase tracking-wider text-deep" data-i18n="solution_examples">ຕົວຢ່າງ</h4>
+                  <ul id="solution-examples" class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2"></ul>
+                </div>
+              </div>
+
+              <div class="mt-8 border-t border-deep/10 pt-6">
+                <div id="solution-progress" class="mb-5 flex items-center justify-center gap-2" role="img"></div>
+                <div class="flex items-center justify-between gap-4">
+                  <button id="solution-previous" type="button" class="group inline-flex min-h-12 items-center gap-2 rounded-full border border-deep/20 px-5 py-3 font-semibold text-deep transition hover:border-deep hover:bg-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none">
+                    <i class="ri-arrow-left-line inline-block transition-transform duration-300 group-hover:-translate-x-1 group-focus-visible:-translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0" aria-hidden="true"></i>
+                    <span data-i18n="solution_previous">ກ່ອນໜ້າ</span>
+                  </button>
+                  <span id="solution-count" class="text-xs font-semibold tracking-wider text-deep/55" aria-hidden="true"></span>
+                  <button id="solution-next" type="button" class="group inline-flex min-h-12 items-center gap-2 rounded-full bg-forest px-6 py-3 font-semibold text-white shadow-md transition hover:bg-leaf focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none">
+                    <span data-i18n="solution_next">ຕໍ່ໄປ</span>
+                    <i class="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-visible:translate-x-0" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-deep py-12 text-white sm:py-14">
+      <div class="mx-auto max-w-7xl px-4 sm:px-12">
+        <div class="mb-10 grid grid-cols-1 items-start gap-8 md:grid-cols-12">
+          <div class="flex flex-col items-start gap-5 sm:flex-row sm:gap-7 md:col-span-7">
+            <a href="Green Luang Prabang.html#home" class="shrink-0 rounded-2xl bg-white p-2" aria-label="Green Luang Prabang home">
+              <img src="Images/Green LPB _ without background (1).png" alt="Green Luang Prabang logo" class="h-24 w-24 object-contain" />
+            </a>
+            <div class="space-y-2 text-sm text-gray-300">
+              <h2 class="inline-flex items-center gap-2 text-xl font-bold tracking-wide text-white">
+                <i class="ri-leaf-line text-emerald-300" aria-hidden="true"></i>
+                Green Luang Prabang
+              </h2>
+              <p class="max-w-md leading-relaxed text-gray-400" data-i18n="footer_desc"></p>
+              <p class="inline-flex items-center gap-2 text-gray-300">
+                <i class="ri-map-pin-line text-emerald-300" aria-hidden="true"></i>
+                <strong data-i18n="footer_location"></strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-col space-y-3 text-sm text-gray-300 md:col-span-5 md:pl-6">
+            <h3 class="text-base font-bold uppercase tracking-[0.12em] text-emerald-200" data-i18n="footer_contact"></h3>
+            <div class="flex flex-wrap items-baseline gap-2">
+              <i class="ri-phone-line w-4 text-emerald-300" aria-hidden="true"></i>
+              <span class="font-medium text-gray-200" data-i18n="footer_phone_label"></span>
+              <a href="tel:+8562023246519" class="transition-colors duration-200 hover:text-emerald-300">020 23 246 519</a>
+            </div>
+            <div class="flex flex-wrap items-baseline gap-2">
+              <i class="ri-mail-line w-4 text-emerald-300" aria-hidden="true"></i>
+              <span class="font-medium text-gray-200" data-i18n="footer_email_label"></span>
+              <a href="mailto:greenluangprabang@gmail.com" class="break-all transition-colors duration-200 hover:text-emerald-300">greenluangprabang@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 border-t border-gray-800/80"></div>
+
+        <div class="flex flex-col gap-6 pt-2 md:flex-row md:items-center md:justify-between">
+          <nav aria-label="Footer navigation" class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs font-semibold text-gray-300 md:justify-start">
+            <a href="Green Luang Prabang.html#home" class="transition-colors hover:text-emerald-300" data-i18n="nav_home"></a>
+            <a href="Green Luang Prabang.html#about" class="transition-colors hover:text-emerald-300" data-i18n="nav_about"></a>
+            <a href="Green Luang Prabang.html#projects" class="transition-colors hover:text-emerald-300" data-i18n="nav_projects"></a>
+            <a href="Green Luang Prabang.html#gallery" class="transition-colors hover:text-emerald-300" data-i18n="nav_gallery"></a>
+            <a href="Green Luang Prabang.html#donate" class="transition-colors hover:text-emerald-300" data-i18n="nav_donate"></a>
+          </nav>
+
+          <div class="flex items-center justify-center gap-3 text-white">
+            <a href="https://www.facebook.com/share/1FWvvD2T1J/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep">
+              <i class="ri-facebook-fill text-sm" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.tiktok.com/@greenluangprabang?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep">
+              <i class="ri-tiktok-fill text-sm" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/greenluangprabang?utm_source=ig_web_button_share_sheet&amp;psln=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-white transition-all duration-200 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-300 hover:text-deep">
+              <i class="ri-instagram-line text-sm" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-7 flex flex-col gap-3 border-t border-white/10 pt-5 text-center text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <p class="inline-flex items-center justify-center gap-2 sm:justify-start">
+            <i class="ri-leaf-line shrink-0 text-emerald-300" aria-hidden="true"></i>
+            <span data-i18n="footer_motto"></span>
+          </p>
+          <p class="inline-flex items-center justify-center gap-2 sm:justify-start" data-i18n="footer_copy"></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Bilingual Translation Dictionary for Water Page
+      const T = {
+        back_projects: ["ກັບສູ່ໂຄງການ", "Back to projects"],
+        badge_water: ["ລະບົບນິເວດສາຍນຳ້ · ຫຼວງພະບາງ", "Water Ecosystem · Luang Prabang"],
+        hero_title: [
+          "ມົນລະພິດທາງນ້ຳ ແລະ ຜົນກະທົບຕໍ່ແມ່ສາຍນ້ຳຂອງ-ນ້ຳຄານ",
+          "Water Pollution and Impacts on the Mekong & Nam Khan Rivers"
+        ],
+        hero_desc: [
+          "ຫຼວງພະບາງຕັ້ງຢູ່ຈຸດບັນຈົບກັນຂອງ <strong>ແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ</strong> ເຊິ່ງເປັນຫົວໃຈຂອງວັດທະນະທຳ ແລະ ຊີວິດການເປັນຢູ່. ແຕ່ໃນປັດຈຸບັນ, ນ້ຳເສຍຈາກຄົວເຮືອນ, ທຸລະກິດການທ່ອງທ່ຽວ ແລະ ສິ່ງເສດເຫຼືອທີ່ບໍ່ໄດ້ຮັບການບຳບັດ ກຳລັງຄຸກຄາມຄຸນນະພາບນ້ຳຢ່າງຮ້າຍແຮງ.",
+          "Luang Prabang sits at the confluence of the <strong>Mekong and Nam Khan rivers</strong>, the heart of local culture and life. However, untreated wastewater from households, tourism businesses, and solid waste threaten water quality significantly."
+        ],
+        btn_explore: ["ສຳຫຼວດສາເຫດ ແລະ ບັນຫາ", "Explore Issues"],
+        btn_solutions: ["ແນວທາງປົກປ້ອງແຫຼ່ງນ້ຳ", "Water Solutions"],
+        img_caption: [
+          "ຄວາມສະອາດຂອງສາຍນ້ຳສະທ້ອນເຖິງສຸຂະພາບຂອງຊຸມຊົນ ແລະ ສິ່ງແວດລ້ອມທ້ອງຖິ່ນ.",
+          "The cleanliness of rivers reflects the health of the local community."
+        ],
+        stat1_title: ["ແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ", "Mekong & Nam Khan"],
+        stat1_desc: ["ສາຍນ້ຳສຳຄັນທີ່ຫຼໍ່ລ້ຽງເມືອງມໍລະດົກໂລກ", "Lifelines nurturing the heritage town."],
+        stat2_title: ["ການບຳບັດນ້ຳເສຍຍັງມີຈຳກັດ", "Limited Wastewater Treatment"],
+        stat2_desc: ["ນ້ຳເສຍຈາກຄົວເຮືອນ ແລະ ຮ້ານຄ້າໄຫຼລົງສູ່ແມ່ນ້ຳໂດຍກົງ", "Household and business water flows directly into rivers."],
+        stat3_title: ["ມົນລະພິດພາດສະຕິກທີ່ເບິ່ງບໍ່ເຫັນ", "Invisible Plastic Pollution"],
+        stat3_desc: ["ເສດພາດສະຕິກຂະໜາດນ້ອຍສະສົມໃນຫ່ວງໂສ້ອາຫານຂອງສັດນ້ຳ", "Microplastics accumulating in aquatic food chains."],
+        stat4_title: ["ພະລັງຊຸມຊົນໃນການປົກປ້ອງສາຍນ້ຳ", "Community Power"],
+        stat4_desc: ["ຄວາມຮັບຮູ້ ແລະ ການລົງມືເຮັດຂອງທຸກຄົນຄືຄຳຕອບ", "Collective awareness and action protect our waters."],
+        
+        challenges_eyebrow: ["ວິກິດການ ແລະ ໄພຄຸກຄາມທາງນ້ຳ", "Water Crisis & Threats"],
+        challenges_title: ["ສາເຫດຫຼັກຂອງມົນລະພິດທາງນ້ຳໃນຫຼວງພະບາງ", "Key Causes of Water Pollution"],
+        challenges_sub: [
+          "ປັດໃຈທີ່ສົ່ງຜົນກະທົບຕໍ່ຄຸນນະພາບນ້ຳ, ຄວາມຫຼາກຫຼາຍທາງຊີວະນາໆພັນ ແລະ ສຸຂະພາບຂອງປະຊາຊົນລຽບຕາມແມ່ນ້ຳຂອງ-ຄານ",
+          "Factors affecting water quality, biodiversity, and community health."
+        ],
+        tag_wastewater: ["ນ້ຳເສຍບໍ່ໄດ້ຮັບການບຳບັດ", "Untreated Wastewater"],
+        c1_title: ["ນ້ຳເສຍຈາກຄົວເຮືອນ ແລະ ທຸລະກິດ", "Household & Business Wastewater"],
+        c1_desc: [
+          "ນ້ຳເສຍຈາກຄົວເຮືອນ, ຮ້ານອາຫານ ແລະ ໂຮງແຮມໃນເຂດເມືອງເກົ່າ ບາງສ່ວນຍັງຂາດລະບົບບຳບັດນ້ຳເສຍທີ່ມີປະສິດທິພາບ ກ່ອນປ່ອຍລົງສູ່ແມ່ນ້ຳຄານ ແລະ ແມ່ນ້ຳຂອງ",
+          "Wastewater from homes, restaurants, and hotels in the old town often lacks effective treatment before draining into the rivers."
+        ],
+        c1_action: ["💡 ແນວທາງແກ້ໄຂ: ຕິດຕັ້ງລະບົບບຳບັດນ້ຳເສຍເບື້ອງຕົ້ນ ແລະ ຄັດແຍກສານເຄມີ", "💡 Solution: Install basic wastewater treatment and filter chemicals"],
+
+        tag_plastic_river: ["ຂີ້ເຫຍື້ອພາດສະຕິກແຄມນ້ຳ", "Riverside Plastic Waste"],
+        c2_title: ["ຂີ້ເຫຍື້ອພາດສະຕິກຖືກຊັດລົງແມ່ນ້ຳ", "Plastic Waste Washed into Rivers"],
+        c2_desc: [
+          "ຂວດພາດສະຕິກ, ຖົງພາດສະຕິກ ແລະ ໂຟມທີ່ຖືກຖິ້ມເກື່ອນຕາມແຄມຝັ່ງ ມັກຖືກກະແສນ້ຳພັດລົງສູ່ແມ່ນ້ຳໃນລະດູຝົນ ແລະ ເປັນອັນຕະລາຍຕໍ່ປາ ແລະ ສັດນ້ຳ",
+          "Improperly discarded plastic bottles, bags, and foam along riverbanks wash into rivers during monsoon season, harming aquatic life."
+        ],
+        c2_action: ["💡 ແນວທາງແກ້ໄຂ: ຮ່ວມກິດຈະກຳເກັບຂີ້ເຫຍື້ອຕາມແຄມນ້ຳ ແລະ ຫຼຸດການໃຊ້ພາດສະຕິກໃຊ້ຄັ້ງດຽວ", "💡 Solution: Join riverside clean-ups and avoid single-use plastics"],
+
+        tag_ecosystem: ["ລະບົບນິເວດຖືກທຳລາຍ", "Ecosystem Degradation"],
+        c3_title: ["ຜົນກະທົບຕໍ່ຄວາມຫຼາກຫຼາຍທາງຊີວະພາບ", "Impact on Biodiversity"],
+        c3_desc: [
+          "ມົນລະພິດທາງນ້ຳ ແລະ ສານເຄມີຕົກຄ້າງສົ່ງຜົນກະທົບຕໍ່ພັນປາທ້ອງຖິ່ນ, ແຫຼ່ງອາຫານຕາມທຳມະຊາດ ແລະ ວິຖີຊີວິດຂອງຊຸມຊົນປະມົງທີ່ພຶ່ງພາສາຍນ້ຳ",
+          "Water pollution and chemical residues affect local fish species, natural food sources, and fishing communities."
+        ],
+        c3_action: ["💡 ແນວທາງແກ້ໄຂ: ປົກປ້ອງປ່າໄມ້ລຽບຕາມແຄມນ້ຳ ແລະ ອະນຸລັກສັດນ້ຳທ້ອງຖິ່ນ", "💡 Solution: Protect riverside forests and preserve native aquatic life"],
+
+        sol_eyebrow: ["ການຮ່ວມມືຂອງຊຸມຊົນ", "Community Action"],
+        sol_title: ["ແນວທາງປົກປ້ອງ ແລະ ຟື້ນຟູແຫຼ່ງນ້ຳໃນຫຼວງພະບາງ", "Water Protection & Restoration Steps"],
+        sol_sub: [
+          "Green Luang Prabang ມຸ່ງເນັ້ນການສ້າງຄວາມຮັບຮູ້ ແລະ ການລົງມືເຮັດຮ່ວມກັນ ເພື່ອຮັກສາຄວາມສະອາດຂອງແມ່ນ້ຳຂອງ ແລະ ແມ່ນ້ຳຄານ",
+          "Green Luang Prabang focuses on raising awareness and taking action to preserve the Mekong and Nam Khan rivers."
+        ],
+        sol_card_label: ["ການແກ້ໄຂໂດຍຊຸມຊົນ", "COMMUNITY SOLUTION"],
+        solution_examples: ["ຕົວຢ່າງ", "EXAMPLES"],
+        solution_previous: ["ກ່ອນໜ້າ", "Previous"],
+        solution_next: ["ຕໍ່ໄປ", "Next"],
+        solution_image_note: [
+          "ຮູບປະກອບສ້າງດ້ວຍ AI · ປະເພດຂີ້ເຫຍື້ອໃນຮູບເປັນຕົວຢ່າງ; ກະລຸນາປະຕິບັດຕາມຄຳແນະນຳການຄັດແຍກໃນທ້ອງຖິ່ນ.",
+          "AI-generated illustration · Waste types shown in the image are examples; please follow local sorting guidance.",
+        ],
+        s1_title: ["ການກຳຈັດສານອັນຕະລາຍຢ່າງຖືກວິທີ", "Proper Disposal"],
+        s1_desc: ["ຢ່າເທນ້ຳມັນເຄື່ອງ, ສີທາ, ນ້ຳຢາເຄມີທຳຄວາມສະອາດ ຫຼື ຢາທີ່ເຫຼືອ ລົງໃນທໍ່ລະບາຍນ້ຳ, ອ່າງລ້າງ ຫຼື ທໍ່ລະບາຍນ້ຳຝົນ. ນຳນ້ຳມັນເຄື່ອງໃຊ້ແລ້ວໄປສົ່ງທີ່ຮ້ານຂາຍອະໄຫຼ່ລົດໃນທ້ອງຖິ່ນ.", "Never pour motor oil, paint, chemical cleaners, or leftover medications down drains, sinks, or outdoor storm drains. Take used motor oil to a local auto parts store."],
+        
+        s2_title: ["ຫຼີກລ້ຽງນ້ຳມັນ ແລະ ໄຂມັນ", "Avoid Fats and Grease"],
+        s2_desc: ["ຢ່າເທນ້ຳມັນປຸງອາຫານ, ໄຂມັນ ຫຼື ນ້ຳມັນເຫຼືອລົງໃນອ່າງລ້າງຈານ. ໃຫ້ໃສ່ໃນພາຊະນະທີ່ປິດສະໜິດ ແລ້ວຖິ້ມໃສ່ຖັງຂີ້ເຫຍື້ອ.", "Do not pour cooking oil, fat, or grease down the kitchen sink. Put them in a sealed container and throw them in the trash."],
+
+        s3_title: ["ໃຊ້ຜະລິດຕະພັນທີ່ເປັນມິດຕໍ່ສິ່ງແວດລ້ອມ", "Use Eco-Friendly Products"],
+        s3_desc: ["ປ່ຽນມາໃຊ້ນ້ຳຢາຊັກຟອກທີ່ປາສະຈາກຟອສເຟດ ແລະ ນ້ຳຢາທຳຄວາມສະອາດໃນຄົວເຮືອນທີ່ເປັນທຳມະຊາດ ຫຼື ບໍ່ເປັນພິດ ເພື່ອປ້ອງກັນການເກີດສາຫຼ່າຍທີ່ເປັນອັນຕະລາຍໃນແຫຼ່ງນ້ຳທ້ອງຖິ່ນ.", "Switch to phosphate-free detergents and natural or non-toxic household cleaning alternatives to prevent harmful algae blooms in local waters."],
+
+        s4_title: ["ຫຼຸດຜ່ອນຂີ້ເຫຍື້ອພາດສະຕິກ", "Reduce Plastic Waste"],
+        s4_desc: ["ຫຼຸດການໃຊ້ພາດສະຕິກໃຊ້ຄັ້ງດຽວ, ເລືອກໃຊ້ຂວດນ້ຳ ແລະ ຖົງທີ່ນຳກັບມາໃຊ້ຄືນໄດ້, ແລະ ຄັດແຍກຂີ້ເຫຍື້ອເພື່ອນຳໄປຣີໄຊເຄິນຢ່າງຖືກວິທີ.", "Cut back on single-use plastics, choose reusable water bottles and bags, and recycle properly."],
+
+        footer_cta_text: ["ທ່ານຕ້ອງການຮ່ວມກິດຈະກຳອະນາໄມແຄມນ້ຳກັບພວກເຮົາບໍ?", "Want to join our riverside clean-up activities?"],
+        footer_cta_btn: ["ເຂົ້າຮ່ວມກິດຈະກຳ", "Join Activities"],
+        footer_desc: [
+          "Green Luang Prabang ສ້າງແຮງບັນດານໃຈໃຫ້ຮັບຜິດຊອບຕໍ່ສິ່ງແວດລ້ອມ ໂດຍເຊື່ອມຊຸມຊົນເຂົ້າກັນ ເພື່ອຫຼຸດຂີ້ເຫຍື້ອ ນຳວັດສະດຸກັບມາໃຊ້ໃໝ່ ແລະ ສ້າງການປ່ຽນແປງທີ່ດີໃນຫຼວງພະບາງ.",
+          "Green Luang Prabang inspires environmental responsibility by bringing communities together to reduce waste, reuse materials, and create positive change in Luang Prabang."
+        ],
+        footer_location: ["ຫຼວງພະບາງ, ລາວ", "Luang Prabang, Laos"],
+        footer_contact: ["ຕິດຕໍ່", "Contact"],
+        footer_phone_label: ["ໂທ:", "Phone:"],
+        footer_email_label: ["ອີເມວ:", "Email:"],
+        nav_home: ["ໜ້າຫຼັກ", "Home"],
+        nav_about: ["ກ່ຽວກັບພວກເຮົາ", "About"],
+        nav_projects: ["ໂຄງການ", "Projects"],
+        nav_gallery: ["ຄັງຮູບ", "Gallery"],
+        nav_donate: ["ບໍລິຈາກຝາຂວດ", "Donate Caps"],
+        footer_motto: ["ການປົກປ້ອງທຳມະຊາດເລີ່ມຈາກທາງເລືອກຂອງພວກເຮົາໃນມື້ນີ້.", "Protecting nature starts with the choices we make today."],
+        footer_copy: ["© 2026 Kula. ສະຫງວນສິດທັງໝົດ.", "© 2026 Kula. All rights reserved."]
+      };
+
+      const solutionSlides = [
+        {
+          title: "s1_title",
+          description: "s1_desc",
+          image: "Images/Four Colorful Bins, Open and Overflowing.png",
+          alt: ["ຖັງຄັດແຍກຂີ້ເຫຍື້ອສີ່ປະເພດ: ຣີໄຊເຄິນ, ຂີ້ເຫຍື້ອອິນຊີ, ສານອັນຕະລາຍ ແລະ ແກ້ວ", "Four waste sorting bins for recycling, organic waste, hazardous waste, and glass"],
+          examples: [
+            ["ນຳນ້ຳມັນເຄື່ອງໃຊ້ແລ້ວໄປສົ່ງທີ່ຮ້ານຂາຍອະໄຫຼ່ລົດ", "Take used motor oil to a local auto parts store"],
+            ["ຢ່າເທສີທາ ຫຼື ນ້ຳຢາເຄມີລົງທໍ່ລະບາຍນ້ຳ", "Keep paint and chemical cleaners out of drains"],
+            ["ຢ່າຖິ້ມຢາທີ່ເຫຼືອລົງອ່າງລ້າງ ຫຼື ທໍ່ນ້ຳຝົນ", "Keep leftover medications out of sinks and storm drains"]
+          ]
+        },
+        {
+          title: "s2_title",
+          description: "s2_desc",
+          image: "Images/No Fats or Grease Sign.png",
+          alt: ["ສັນຍາລັກຫ້າມເທນ້ຳມັນ ແລະ ໄຂມັນລົງທໍ່ລະບາຍນ້ຳ", "Sign showing not to pour fats or grease down the drain"],
+          examples: [
+            ["ປ່ອຍໃຫ້ນ້ຳມັນປຸງອາຫານເຢັນ ແລ້ວໃສ່ຂວດ ຫຼື ກະປ໋ອງທີ່ປິດສະໜິດ", "Let cooking oil cool, then seal it in a bottle or can"],
+            ["ໃຊ້ເຈ້ຍເຊັດໄຂມັນຈາກໝໍ້ ແລະ ຖິ້ມໃສ່ຖັງຂີ້ເຫຍື້ອ", "Wipe grease from pans with a paper towel and bin it"],
+            ["ຖິ້ມພາຊະນະທີ່ປິດແລ້ວໃສ່ຖັງຂີ້ເຫຍື້ອ", "Put the sealed container in the trash"]
+          ]
+        },
+        {
+          title: "s3_title",
+          description: "s3_desc",
+          image: "Images/eco-friendly-products.png",
+          alt: ["ຜະລິດຕະພັນທີ່ເປັນມິດຕໍ່ສິ່ງແວດລ້ອມ, ກະຕ່າຖົງຫຼືອຸປະກອນເຄື່ອງໃຊ້ຄືນໄດ້", "Eco-friendly products including reusable bag, bottle, and household items"],
+          examples: [
+            ["ເລືອກນ້ຳຢາຊັກຟອກທີ່ລະບຸວ່າປາສະຈາກຟອສເຟດ", "Choose detergents labeled phosphate-free"],
+            ["ໃຊ້ນ້ຳຢາທຳຄວາມສະອາດທີ່ລະບຸວ່າບໍ່ເປັນພິດ", "Choose household cleaners labeled non-toxic"],
+            ["ລອງໃຊ້ສູດທຳຄວາມສະອາດຈາກສ່ວນປະກອບທຳມະຊາດ", "Try cleaning alternatives made with natural ingredients"]
+          ]
+        },
+        {
+          title: "s4_title",
+          description: "s4_desc",
+          image: "Images/Choose Reuse, Protect Earth.png",
+          alt: ["ຜະລິດຕະພັນເປັນມິດຕໍ່ສິ່ງແວດລ້ອມ, ເຊັ່ນ: ຖົງແລະກະປ່ອງທີ່ໃຊ້ຄືນໄດ້", "Eco-friendly reusable products such as bags and containers that reduce plastic waste"],
+          examples: [
+            ["ພົກຂວດນ້ຳທີ່ໃຊ້ຄືນໄດ້", "Carry a reusable water bottle"],
+            ["ໃຊ້ຖົງຜ້າ ແທນຖົງຢາງໃຊ້ຄັ້ງດຽວ", "Bring a reusable bag instead of a single-use plastic bag"],
+            ["ຄັດແຍກພາດສະຕິກໃຫ້ຖືກປະເພດ ແລະ ນຳໄປຣີໄຊເຄິນ", "Sort plastic correctly and recycle it"]
+          ]
+        }
+      ];
+
+      let L = "lo";
+      let solutionIndex = 0;
+      try {
+        const savedLanguage = localStorage.getItem("glp-lang");
+        if (savedLanguage === "lo" || savedLanguage === "en") {
+          L = savedLanguage;
+        }
+      } catch (error) {
+        console.warn("Could not read the saved language preference.", error);
+      }
+
+      function renderWaterPage() {
+        document.documentElement.lang = L;
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.dataset.i18n;
+          if (T[key]) {
+            el.innerHTML = T[key][L === "lo" ? 0 : 1];
+          }
+        });
+        renderWaterSolution();
+        document.querySelectorAll("[data-lang]").forEach(b => {
+          const active = b.dataset.lang === L;
+          b.classList.toggle("act", active);
+          b.setAttribute("aria-pressed", String(active));
+        });
+      }
+
+      function renderWaterSolution(animate = false) {
+        const languageIndex = L === "lo" ? 0 : 1;
+        const slide = solutionSlides[solutionIndex];
+        const image = document.getElementById("solution-image");
+        const content = document.getElementById("solution-content");
+        document.getElementById("solution-image-frame").classList.toggle(
+          "solution-bin-background",
+          solutionIndex === 0,
+        );
+        document.getElementById("solution-image-frame").classList.toggle(
+          "solution-grease-background",
+          solutionIndex === 1,
+        );
+        document.getElementById("solution-image-frame").classList.toggle(
+          "solution-eco-background",
+          solutionIndex === 2,
+        );
+        document.getElementById("solution-image-frame").classList.toggle(
+          "solution-plastic-background",
+          solutionIndex === 3,
+        );
+        document.getElementById("solution-image-frame").classList.toggle(
+          "solution-image-centered-frame",
+          solutionIndex === 1 || solutionIndex === 2 || solutionIndex === 3,
+        );
+        image.classList.toggle("solution-image-centered", solutionIndex === 1 || solutionIndex === 2 || solutionIndex === 3);
+        image.classList.toggle("object-contain", solutionIndex === 0 || solutionIndex === 1 || solutionIndex === 2 || solutionIndex === 3);
+        image.classList.toggle("object-cover", solutionIndex !== 0 && solutionIndex !== 1 && solutionIndex !== 2 && solutionIndex !== 3);
+        image.style.maxWidth = solutionIndex === 2 || solutionIndex === 3 ? "89%" : "100%";
+        image.style.maxHeight = solutionIndex === 2 || solutionIndex === 3 ? "89%" : "100%";
+        image.src = slide.image;
+        image.alt = slide.alt[languageIndex];
+        document.getElementById("solution-title").textContent =
+          T[slide.title][languageIndex];
+        document.getElementById("solution-description").textContent =
+          T[slide.description][languageIndex];
+        document.getElementById("solution-examples").replaceChildren(
+          ...slide.examples.map((example) => {
+            const item = document.createElement("li");
+            item.className =
+              "flex items-start gap-3 rounded-xl border border-deep/10 bg-white px-3 py-3 text-sm text-deep";
+            const icon = document.createElement("i");
+            icon.className = "ri-check-line mt-0.5 text-lg text-leaf";
+            icon.setAttribute("aria-hidden", "true");
+            const label = document.createElement("span");
+            label.textContent = example[languageIndex];
+            item.append(icon, label);
+            return item;
+          }),
+        );
+        document.getElementById("solution-step").textContent =
+          `${String(solutionIndex + 1).padStart(2, "0")} / ${String(solutionSlides.length).padStart(2, "0")}`;
+        document.getElementById("solution-count").textContent =
+          `${String(solutionIndex + 1).padStart(2, "0")} / ${String(solutionSlides.length).padStart(2, "0")}`;
+
+        const progress = document.getElementById("solution-progress");
+        progress.setAttribute(
+          "aria-label",
+          L === "lo" ? "ຄວາມຄືບໜ້າຂອງແນວທາງແກ້ໄຂ" : "Community solutions progress",
+        );
+        progress.replaceChildren(
+          ...solutionSlides.map((item, index) => {
+            const indicator = document.createElement("span");
+            indicator.className = "h-2.5 rounded-full transition-all duration-300";
+            indicator.style.backgroundColor =
+              index === solutionIndex ? "#0d4a34" : "#d1d5db";
+            indicator.style.width = index === solutionIndex ? "2rem" : "0.625rem";
+            indicator.setAttribute(
+              "aria-label",
+              `${L === "lo" ? "ຂັ້ນຕອນ" : "Step"} ${index + 1}: ${T[item.title][languageIndex]}`,
+            );
+            if (index === solutionIndex) indicator.setAttribute("aria-current", "step");
+            return indicator;
+          }),
+        );
+
+        document.getElementById("solution-previous").disabled = solutionIndex === 0;
+        document.getElementById("solution-next").disabled =
+          solutionIndex === solutionSlides.length - 1;
+
+        if (animate) {
+          content.classList.remove("solution-content-enter");
+          image.classList.remove("solution-image-enter");
+          void content.offsetWidth;
+          content.classList.add("solution-content-enter");
+          image.classList.add("solution-image-enter");
+        }
+      }
+
+      document.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (b) {
+          L = b.dataset.lang;
+          try {
+            localStorage.setItem("glp-lang", L);
+          } catch (error) {
+            console.warn("Could not save the language preference.", error);
+          }
+          renderWaterPage();
+        }
+      });
+
+      document.getElementById("solution-previous").addEventListener("click", () => {
+        if (solutionIndex > 0) {
+          solutionIndex -= 1;
+          renderWaterSolution(true);
+        }
+      });
+
+      document.getElementById("solution-next").addEventListener("click", () => {
+        if (solutionIndex < solutionSlides.length - 1) {
+          solutionIndex += 1;
+          renderWaterSolution(true);
+        }
+      });
+
+      renderWaterPage();
+    </script>
+</body>
+</html>
