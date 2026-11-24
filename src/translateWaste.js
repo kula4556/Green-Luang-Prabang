@@ -90,11 +90,6 @@ const T = {
   guide_previous: ["ກ່ອນໜ້າ", "Previous"],
   guide_next: ["ຖັດໄປ", "Next"],
 
-  footer_cta_text: [
-    "ຕ້ອງການມີສ່ວນຮ່ວມໃນການຈັດການຂີ້ເຫຍື້ອ ຫຼື ເຂົ້າຮ່ວມກິດຈະກຳກັບພວກເຮົາ?",
-    "Want to get involved in waste management or join our next clean-up?",
-  ],
-  footer_cta_btn: ["ເຂົ້າຮ່ວມກິດຈະກຳ", "Join Activities"],
   footer_desc: [
     "ຫຼວງພະບາງທີ່ສະອາດ ຂຽວ ແລະ ຍືນຍົງກວ່າ ບ່ອນທີ່ຊຸມຊົນຮ່ວມກັນປົກປ້ອງທຳມະຊາດ ແລະ ສ້າງໂອກາດໃຫ້ຄົນລຸ້ນຕໍ່ໄປ.",
     "A cleaner, greener, and more sustainable Luang Prabang where communities work together to protect nature.",
@@ -119,22 +114,45 @@ const wasteCategories = [
     ],
     tipTitle: ["ຄໍາແນະນຳ", "SORTING TIP"],
     tip: [
-      "ເອົາຂີ້ເຫຍື້ອເຊັ່ນ: ກາຂ້ອນເຫງີ, ຊຸດຫຸ້ມຫໍ່ທີ່ມີການປົນເປື້ອນ, ຝັງຄວາມບົກ, ແລະຂີ້ເຫຍື້ອໃນບ້ານທີ່ບໍ່ສາມາດຈັດການໄດ້.",
-      "Items like dirty tissues, contaminated packaging, dust, and other household waste should go here when they cannot be recycled or composted.",
+      "ບໍ່ຄວນຖິ້ມຂີ້ເຫຍື້ອທີ່ມີເສດອາຫານຫຼືຂອງແຫຼວລົງໃນຖັງຂີ້ເຫຍື້ອທົ່ວໄປ (ຖັງສີຟ້າ). ຄວນມ້ຽນມັດຫຼືຫໍ່ຂີ້ເຫຍື້ອທີ່ອາດສົ່ງກິ່ນເໝັນໃຫ້ດີກ່ອນຖິ້ມລົງຖັງ.",
+      "Do not put waste containing food scraps or liquids in the general waste bin (blue bin). Tie or wrap waste that may smell before placing it in the bin.",
     ],
+    examplesTitle: ["ຕົວຢ່າງຂີ້ເຫຍື້ອໃນຖັງສີຟ້າ:", "Examples of waste for the blue bin"],
     examples: [
-      { icon: "ri-hand-sanitizer-line", name: ["ເຊັດ ແລະ ກ້ອນຕິດ", "Dirty tissues"] },
-      { icon: "ri-package-line", name: ["ກ່ອງຫຸ້ມຫໍ່ທີ່ຝັດມີການປົນເປື້ອນ", "Contaminated packaging"] },
-      { icon: "ri-dusty-line", name: ["ຝັງຄວາມບົກ", "Dust and household debris"] },
-      { icon: "ri-home-2-line", name: ["ຂີ້ເຫຍື້ອໃນບ້ານກ້ອນ", "Small household waste"] },
+      { icon: "ri-package-line", name: ["ກ່ອງໂຟມເປື້ອນອາຫານ", "Food-stained foam containers"] },
+      { icon: "ri-file-text-line", name: ["ເຈ້ຍທິດຊູ່ທີ່ໃຊ້ແລ້ວ", "Used tissues"] },
+      { icon: "ri-goblet-line", name: ["ເສດຈານຫຼືຖ້ວຍທີ່ແຕກ", "Broken plates or cups"] },
+      { icon: "ri-forbid-2-line", name: ["ກົ້ນຢາສູບທີ່ດັບສະໜິດ", "Fully extinguished cigarette butts"] },
     ],
   },
   {
     binLabel: ["ຖັງສີຂຽວ", "Green Bin"],
-    name: ["ຂີ້ເຫຍື້ອຣີໄຊເຄິນ", "Recyclable Waste"],
+    name: ["ຂີ້ເຫຍື້ອອິນຊີ", "Organic Waste"],
     color: "#16a34a",
     tint: "#f0fdf4",
     image: "Images/Green_Recycling_Bin_on_Black_Background-removebg-preview.png",
+    purpose: [
+      "ຂີ້ເຫຍື້ອທີ່ມາຈາກພືດ ແລະ ອາຫານທີ່ສາມາດເປັນຝຸ່ນບົ່ມໄດ້.",
+      "Organic waste comes from plants and food, and it can be turned into compost to improve soil.",
+    ],
+    tipTitle: ["ຄໍາແນະນຳ", "SORTING TIP"],
+    tip: [
+      "ວາງເສດອາຫານເຫຼືອ, ເປືອກໝາກໄມ້, ເສດຜັກ, ເບື້ອງໃບໄມ້, ແລະຫຍ້າໃສ່ຖັງນີ້. ການເກັບຂີ້ເຫຍື້ອອິນຊີອັນຍາກຈະຖືກປ່ຽນເປັນຝຸ່ນບົ່ມເພື່ອປັບປຸງດິນດັ່ງປັບລັກສະນະຂອງດິນ.",
+      "Fruit peels, vegetable scraps, leftover food, leaves, and grass belong here. This material can be composted and used to enrich soil for gardens and farms.",
+    ],
+    examples: [
+      { icon: "ri-apple-line", name: ["ເປືອກໝາກໄມ້", "Fruit peels"] },
+      { icon: "ri-seedling-line", name: ["ເສດຜັກ", "Vegetable scraps"] },
+      { icon: "ri-restaurant-line", name: ["ອາຫານເຫຼືອ", "Leftover food"] },
+      { icon: "ri-plant-line", name: ["ໃບໄມ້ ແລະ ຫຍ້າ", "Leaves and grass"] },
+    ],
+  },
+  {
+    binLabel: ["ຖັງສີເຫຼືອງ", "Yellow Bin"],
+    name: ["ຂີ້ເຫຍື້ອຣີໄຊເຄິນ", "Recyclable Waste"],
+    color: "#a16207",
+    tint: "#fefce8",
+    image: "Images/Bright_Yellow_Recycling_Bin-removebg-preview.png",
     purpose: [
       "ສຳລັບວັດສະດຸທີ່ສາມາດເກັບກຳ ແລະ ເຮັດໃຫ້ເປັນຜະລິດຕະພັນໃໝ່ ຊ່ວຍຫຼຸດຜ່ອນຂີ້ເຫຍື້ອທີ່ມາຈາກຂະຫນາດໃຫຍ່.",
       "This bin is for materials that can be collected and processed into new products, reducing pollution and conserving resources.",
@@ -152,11 +170,11 @@ const wasteCategories = [
     ],
   },
   {
-    binLabel: ["ຖັງສີເຫຼືອງ", "Yellow Bin"],
+    binLabel: ["ຖັງສີແດງ", "Red Bin"],
     name: ["ຂີ້ເຫຍື້ອອັນຕະລາຍ", "Hazardous Waste"],
-    color: "#a16207",
-    tint: "#fefce8",
-    image: "Images/Bright_Yellow_Recycling_Bin-removebg-preview.png",
+    color: "#dc2626",
+    tint: "#fef2f2",
+    image: "Images/Bright_Red_Recycling_Bin_on_Black-removebg-preview.png",
     purpose: [
       "ຂີ້ເຫຍື້ອທີ່ຕ້ອງການການຈັດການເພີ່ມເຕີມ ເພາະມັນອາດມີສານເຄມີ ຫຼື ອົງປະກອບທີ່ເປັນອັນຕະລາຍ.",
       "Hazardous waste requires special handling because it may contain harmful substances.",
@@ -171,28 +189,6 @@ const wasteCategories = [
       { icon: "ri-lightbulb-line", name: ["ຫຼອດໄຟ", "Light bulbs"] },
       { icon: "ri-flask-line", name: ["ຖັງບັນຈຸສານເຄມີ", "Chemical containers"] },
       { icon: "ri-computer-line", name: ["ອີເລັກໂຕຣນິກເກົ່າ", "Electronic waste"] },
-    ],
-  },
-  {
-    binLabel: ["ຖັງສີແດງ", "Red Bin"],
-    name: ["ຂີ້ເຫຍື້ອອິນຊີ", "Organic Waste"],
-    color: "#dc2626",
-    tint: "#fef2f2",
-    image: "Images/Bright_Red_Recycling_Bin_on_Black-removebg-preview.png",
-    purpose: [
-      "ຂີ້ເຫຍື້ອທີ່ມາຈາກພືດ ແລະ ອາຫານທີ່ສາມາດເປັນຝຸ່ນບົ່ມໄດ້.",
-      "Organic waste comes from plants and food, and it can be turned into compost to improve soil.",
-    ],
-    tipTitle: ["ຄໍາແນະນຳ", "SORTING TIP"],
-    tip: [
-      "ວາງເສດອາຫານເຫຼືອ, ເປືອກໝາກໄມ້, ເສດຜັກ, ເບື້ອງໃບໄມ້, ແລະຫຍ້າໃສ່ຖັງນີ້. ການເກັບຂີ້ເຫຍື້ອອິນຊີອັນຍາກຈະຖືກປ່ຽນເປັນຝຸ່ນບົ່ມເພື່ອປັບປຸງດິນດັ່ງປັບລັກສະນະຂອງດິນ.",
-      "Fruit peels, vegetable scraps, leftover food, leaves, and grass belong here. This material can be composted and used to enrich soil for gardens and farms.",
-    ],
-    examples: [
-      { icon: "ri-apple-line", name: ["ເປືອກໝາກໄມ້", "Fruit peels"] },
-      { icon: "ri-seedling-line", name: ["ເສດຜັກ", "Vegetable scraps"] },
-      { icon: "ri-restaurant-line", name: ["ອາຫານເຫຼືອ", "Leftover food"] },
-      { icon: "ri-plant-line", name: ["ໃບໄມ້ ແລະ ຫຍ້າ", "Leaves and grass"] },
     ],
   },
 ];
@@ -238,6 +234,8 @@ function renderWasteGuide() {
   document.getElementById("guide-next").style.backgroundColor = accent;
   document.getElementById("guide-count").textContent =
     `${String(guideIndex + 1).padStart(2, "0")} / ${String(wasteCategories.length).padStart(2, "0")}`;
+  document.getElementById("guide-examples-title").textContent =
+    category.examplesTitle?.[languageIndex] ?? T.guide_examples[languageIndex];
 
   const examples = document.getElementById("guide-examples");
   examples.replaceChildren(

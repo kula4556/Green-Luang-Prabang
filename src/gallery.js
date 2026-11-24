@@ -42,28 +42,13 @@ let lightboxIndex = -1;
 let lightboxFrameSize = null;
 let lightboxAspectRatio = null;
 
-function openLightbox(imgSrc, captionText) {
-  const modal = document.getElementById("dlg");
-  const content = document.getElementById("dc");
-
-  if (!modal || !content) {
-    throw new Error("Gallery lightbox dialog elements are missing.");
-  }
-
-  lightboxPhotos = [{ src: imgSrc, caption: captionText }];
-  lightboxIndex = 0;
-  lightboxFrameSize = null;
-  lightboxAspectRatio = null;
-  if (!modal.open) modal.showModal();
-  renderLightboxPhoto();
-}
-
 function renderLightboxPhoto() {
   const content = document.getElementById("dc");
   if (!content || lightboxIndex < 0 || !lightboxPhotos[lightboxIndex]) return;
 
   const { src, caption: captionText } = lightboxPhotos[lightboxIndex];
   const photoIndex = lightboxIndex;
+  const phoneLayout = window.matchMedia("(max-width: 640px)").matches;
   const frame = document.createElement("div");
   frame.className = "relative mx-auto flex items-center justify-center";
   if (lightboxFrameSize) {
@@ -89,12 +74,14 @@ function renderLightboxPhoto() {
       return;
     }
 
-    const maxWidth = Math.min(
-      window.innerWidth * 0.9,
-      window.innerWidth * 0.94 - 24,
-      80 * 16 - 24,
-    );
-    const maxHeight = window.innerHeight * 0.75;
+    const maxWidth = phoneLayout
+      ? Math.min(window.innerWidth * 0.94, 80 * 16)
+      : Math.min(
+          window.innerWidth * 0.94,
+          window.innerWidth * 0.94 - 24,
+          80 * 16 - 24,
+        );
+    const maxHeight = window.innerHeight * (phoneLayout ? 0.78 : 0.75);
     let width;
     let height;
     if (lightboxAspectRatio) {
@@ -114,7 +101,7 @@ function renderLightboxPhoto() {
     frame.style.height = `${height}px`;
     image.style.width = `${width}px`;
     image.style.height = `${height}px`;
-    document.getElementById("dlg").style.width = `${width + 24}px`;
+    document.getElementById("dlg").style.width = `${width + (phoneLayout ? 0 : 24)}px`;
   };
   image.addEventListener("load", setImageSize, { once: true });
   frame.append(image);
@@ -124,16 +111,19 @@ function renderLightboxPhoto() {
   caption.className = "mt-2 text-center font-medium";
 
   const controls = document.createElement("div");
-  controls.className = "mt-2 flex items-center justify-center";
+  controls.className = phoneLayout
+    ? "lightbox-controls mt-3 flex items-center justify-center gap-4"
+    : "mt-2 flex items-center justify-center";
 
   if (lightboxPhotos.length > 1) {
     const previous = document.createElement("button");
     previous.type = "button";
     previous.dataset.galleryStep = "-1";
     previous.setAttribute("aria-label", "Previous picture");
-    previous.className =
-      "absolute left-3 top-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-2xl text-white shadow-lg transition hover:bg-leaf";
-    previous.style.transform = "translateY(-50%)";
+    previous.className = phoneLayout
+      ? "fixed left-2 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-emerald-900 text-xl text-white shadow-lg transition hover:bg-leaf"
+      : "absolute left-3 top-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-2xl text-white shadow-lg transition hover:bg-leaf";
+    if (!phoneLayout) previous.style.transform = "translateY(-50%)";
     const previousIcon = document.createElement("i");
     previousIcon.className = "ri-arrow-left-line";
     previousIcon.setAttribute("aria-hidden", "true");
@@ -147,9 +137,10 @@ function renderLightboxPhoto() {
     next.type = "button";
     next.dataset.galleryStep = "1";
     next.setAttribute("aria-label", "Next picture");
-    next.className =
-      "absolute right-3 top-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-2xl text-white shadow-lg transition hover:bg-leaf";
-    next.style.transform = "translateY(-50%)";
+    next.className = phoneLayout
+      ? "fixed right-2 top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-emerald-900 text-xl text-white shadow-lg transition hover:bg-leaf"
+      : "absolute right-3 top-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-emerald-900 text-2xl text-white shadow-lg transition hover:bg-leaf";
+    if (!phoneLayout) next.style.transform = "translateY(-50%)";
     const nextIcon = document.createElement("i");
     nextIcon.className = "ri-arrow-right-line";
     nextIcon.setAttribute("aria-hidden", "true");
@@ -163,7 +154,7 @@ function renderLightboxPhoto() {
   const modal = document.getElementById("dlg");
   if (modal) {
     modal.style.width = lightboxFrameSize
-      ? `${lightboxFrameSize.width + 24}px`
+      ? `${lightboxFrameSize.width + (phoneLayout ? 0 : 24)}px`
       : "fit-content";
   }
   image.src = src;

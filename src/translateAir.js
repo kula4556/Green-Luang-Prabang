@@ -59,7 +59,6 @@
           "ມົນລະພິດທາງອາກາດ ແລະ ກາສເຮືອນແກ້ວເປັນສາເຫດຫຼັກໜຶ່ງທີ່ສົ່ງຜົນກະທົບໃນຫຼາຍດ້ານ ເຊັ່ນ:",
           "Air pollution and greenhouse gases are a major cause of impacts across several areas, such as:",
         ],
-        tag_torism: ["ດ້ານການທ່ອງທ່ຽວ", "Tourism"],
         c1_title: [
           "ດ້ານການທ່ອງທ່ຽວ",
           "Tourism",
@@ -69,7 +68,6 @@
           "Air pollution leads to a decrease in the number of tourists and negatively affects the income of local people. In addition, PM2.5 pollution reduces visibility obscures the natural beauty.",
         ],
 
-        tag_edu: ["ດ້ານການສຶກສາ", "Education"],
         c2_title: [
           "ດ້ານການສຶກສາ",
           "Education",
@@ -79,7 +77,6 @@
           "Air pollution forces schools to cancel outdoor activities. This costs students learning opportunities, reduces concentration, and puts their health at risk.",
         ],
 
-        tag_health: ["ຜົນກະທົບຕໍ່ສຸຂະພາບ", "Health Impacts"],
         c3_title: [
           "ດ້ານສຸຂະພາບ",
           "Health",
@@ -142,11 +139,6 @@
           "Students can work together to plant trees in schools, communities, and public areas while helping protect forests. Trees absorb carbon dioxide, capture some airborne particles, and create cooler, greener environments.Walk or cycle for short trips around town. For longer journeys, carpool with classmates or share tuk-tuks. Keep motorbikes tuned and tires properly inflated to reduce exhaust emissions.",
         ],
 
-        footer_cta_text: [
-          "ຕ້ອງການສະໜັບສະໜູນໂຄງການສິ່ງແວດລ້ອມ ຫຼື ເຂົ້າຮ່ວມກິດຈະກຳກັບພວກເຮົານຳບໍ?",
-          "Want to support environmental projects or join our activities?",
-        ],
-        footer_cta_btn: ["ເຂົ້າຮ່ວມກິດຈະກຳ", "Join Activities"],
         footer_desc: [
           "ຫຼວງພະບາງທີ່ສະອາດ ຂຽວ ແລະ ຍືນຍົງກວ່າ ບ່ອນທີ່ຊຸມຊົນຮ່ວມກັນປົກປ້ອງທຳມະຊາດ ແລະ ສ້າງໂອກາດໃຫ້ຄົນລຸ້ນຕໍ່ໄປ.",
           "A cleaner, greener, and more sustainable Luang Prabang where communities work together to protect nature.",
@@ -167,7 +159,7 @@
           examples: [
             ["ນັກຮຽນຈັດກິດຈະກຳສ້າງຄວາມຮັບຮູ້ກ່ຽວກັບມົນລະພິດທາງອາກາດ.", "Students organize air pollution awareness campaigns."],
             ["ສ້າງວິດີໂອ ແລະ ໂປສເຕີເພື່ອໃຫ້ຄວາມຮູ້.", "Create educational videos and posters."],
-            ["ຊັກຊວນຄອບຄົວໃຫ້ຫຼີກລ່ຽງການເຜົາຂີ້ເຫຍື້ອກາງແຈ້ງ.", "Encourage families to avoid open burning."],
+            ["ຈັດກິດຈະກຳເຜີຍແຜ່ຂໍ້ມູນແລະວິທີແກ້ກ່ຽວກັບບັນຫາມົນລະພິດໃຫ້ແກ່ຊຸມຊົນຢ່າງທົ່ວເຖິງ", "Organize community-wide activities to share information and solutions about pollution."],
           ],
           resourceLink: {
             href: "https://gggi.org/dont-wait-for-the-smoke-to-clear-invest-in-clean-air-youth-and-innovative-adaptation/",
